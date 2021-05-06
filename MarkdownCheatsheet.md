@@ -1,8 +1,8 @@
 # Markdown Cheatsheet
 
-Written by ***Gesty Linaga*** - [^2]
+Written by ***Gesty Linaga*** [^namenote]
 
-Using *these* references - [^1]
+Using *these* references [^referencenote]
 
 [1]: <https://wiki.archlinux.org/>
 
@@ -101,7 +101,8 @@ horizontal lines:
 
 Sources aka footnotes :
 
-[^1]: Markdown Crash Course | 2020 <https://youtu.be/7SMqArX8PYo>
+[^namenote]: Gesty Linaga
+    <https://github.com/gestylinaga>
 
-[^2]: gesteratops <https://youtu.be/7F44L78Pp68>
-
+[^referencenote]: Markdown Crash Course | 2020 
+    <https://youtu.be/7SMqArX8PYo>
