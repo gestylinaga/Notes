@@ -1,6 +1,12 @@
 # Notes
-Notes written in markdown
+Notes written in markdown on:
 
-- [ ] Linux
-- [ ] Python
-- [x] Markdown Cheatsheet
+* Linux:
+    * General
+    * Debian
+    * Arch
+* Windows:
+    * Chocolatey
+* Languages:
+    * Python
+    * Markdown
