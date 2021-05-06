@@ -1,4 +1,5 @@
 # Glossary
+by: [Gesty Linaga](https://github.com/gestylinaga/)
 
 ## String Concatenation
 - aka 'how to glue strings together'
@@ -99,9 +100,3 @@ user_input = input("give me an input \n")
 > ```python
 > return f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}"
 > ```
-
-
-
-```python
-print('this block exists to copy')
-```
