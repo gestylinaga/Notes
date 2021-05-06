@@ -1,4 +1,5 @@
 # Notes
+By: [Gesty Linaga](https://github.com/gestylinaga/)
 Notes written in markdown on:
 
 * Linux:
