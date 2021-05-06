@@ -1,6 +1,6 @@
-rkdown Cheatsheet
+# Markdown Cheatsheet
 
-Written by ***gesty*** - [^2]
+Written by ***Gesty Linaga*** - [^2]
 
 Using *these* references - [^1]
 
@@ -39,26 +39,26 @@ This is a basic paragraph
 *italics*
 
 ```markdown
-*text*
+*italics*
 ```
 
 **bold**
 
 ```markdown
-**text**
-__text__
+**bold**
+__bold__
 ```
 
-***bold_and_italic***
+***bold and italic***
 
 ```markdown
-***text***
+***bold and italic***
 ```
 
 ~~strikethrough~~
 
 ```markdown
-~~text~~
+~~strikethrough~~
 ```
 
 horizontal lines:
@@ -102,5 +102,6 @@ horizontal lines:
 Sources aka footnotes :
 
 [^1]: Markdown Crash Course | 2020 <https://youtu.be/7SMqArX8PYo>
+
 [^2]: gesteratops <https://youtu.be/7F44L78Pp68>
 
