@@ -10,4 +10,4 @@
 
 By: [Gesty Linaga](https://github.com/gestylinaga/)
 
-[notes image](imgs/splash.png)
+![pixel surf](imgs/splash.png)
