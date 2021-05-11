@@ -6,4 +6,4 @@
 
 ## Websites:
     
-* [TryHackMe](thm.md) -- room writeups
+* [TryHackMe](thm.md) -- Room Writeups

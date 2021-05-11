@@ -272,3 +272,8 @@ ps -ef
 ```
 kill <PID>
 ```
+
+---
+[back to TryHackMe main page](thm.md)
+
+[back to Index/Table of Contents](index.md)
