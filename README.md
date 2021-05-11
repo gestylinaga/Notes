@@ -8,6 +8,9 @@
 
     - TryHackMe.com -- Room Writeups
 
-By: [Gesty Linaga](https://github.com/gestylinaga/)
+* by: [Gesty Linaga](https://github.com/gestylinaga/)
+
+    + [see my Wiki](https://github.com/gestylinaga/gestywiki)
+
 
 ![pixel surf](imgs/splash.png)
