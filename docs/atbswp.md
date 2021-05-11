@@ -2,6 +2,8 @@
 ## Practical Programming for Total Beginners
 > by Al Sweigart
   
+* [Introduction](atbswpIntro.md)
+
 * Part 1:
     1. [Python Basics](atbswp1.md)
     2. Flow Control
