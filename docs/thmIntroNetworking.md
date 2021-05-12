@@ -1,52 +1,52 @@
-# Introductory Networking
+# Introduction to Networking
+
 
 ## The OSI Model -- Open Systems Interconnection
-
 * 7 layers: **A**nxious **P**ale **S**hakespeare **T**reated **N**ervous **D**runks **P**atiently
     
-    - Application -- layer 7
+    - **Application -- Layer 7**
 
-        + provides networking options for programs on a computer
+        + provides networking options for the Programs on a computer
 
-        + lets applications transmit data
+        + lets *applications* transmit data
 
         + when data hits this layer, it's passed down to the presentation layer
 
-    - Presentation -- layer 6
+    - **Presentation -- Layer 6**
 
-        + receives data from application layer; data not in standardised format
+        + receives data from application layer; data not in standardised format yet
 
-        + this layer translates the data, handles any encryption/compression/or transformation
+        + this layer translates the data, handles any encryption/compression/transformation of data
 
         + when data formatting is complete, it passes to the session layer
 
-    - Session -- layer 5
+    - **Session -- Layer 5**
 
         + attempts to connect to remote computer; else process stops here
 
-        + if succesful: maintain connection w/ session layer of remote computer
+        + if succesful: maintains connection w/ session layer of remote computer
 
-        + creates unique 'session' to allow multiple requests w/out mixup
+        + creates unique *session* to allow multiple requests w/out mixup
 
             * like multiple tabs in a browser
 
         + when succesful connection is made, data passes to the transport layer
 
-    - Transport -- layer 4
+    - **Transport -- Layer 4**
 
         + chooses which protocol to send data over
 
-            * TCP -- Transmission Control Protocol
+            * **TCP** -- Transmission Control Protocol
 
-                - 'connection-based' -- connection is established and maintained for duration of request
+                - 'Connection-based' -- connection is established and maintained for duration of request
 
-                - reliable; ensures *all* packets get to right place
+                - Reliable; ensures *all* packets get to right place
 
                 - acceptable speeds, re-send data if necessary
 
                 - accurace over speed: file transfer, loading a webpage
 
-            * UDP -- User Datagram Protocol
+            * **UDP** -- User Datagram Protocol
 
                 - opposite of TCP
 
@@ -64,7 +64,7 @@
 
             - *datagrams* over over UDP
 
-    - Network -- layer 3
+    - **Network -- Layer 3**
 
         + responsible for locating destination for request
 
@@ -72,7 +72,7 @@
 
             - IPV4: 192.168.1.1 -- common home router address
 
-    - Data Link -- layer 2
+    - **Data Link -- Layer 2**
 
         + focuses on physical addressing of the transmission
 
@@ -80,15 +80,15 @@
 
         + adds physical MAC address of reveiving endpoint
 
-            - NIC -- Network Interface Card -- inside every network enabled computer; holds MAC address
+            - **NIC** -- Network Interface Card -- inside every network enabled computer; holds MAC address
 
-            - MAC -- Media Access Control -- unique physical address of a computer; can't be changed; can be spoofed
+            - **MAC** -- Media Access Control -- unique physical address of a computer; *can't* be changed; ***can*** be spoofed
 
         + presents data in suitable format for transmission
 
         + when receiving data: checks for corruption (possible in layer 1: physical)
 
-    - Physical -- layer 1
+    - **Physical -- Layer 1**
 
         + computer hardware level
 
@@ -97,6 +97,7 @@
         + converts binary data of transmisson into signals to send over network
 
         + receives incoming signals and converts them back into binary data
+
 
 ### Encapsulation -- process by which data can be sent from one computer to another
 
@@ -202,8 +203,9 @@ tracert <destination>
 whois <domain>
 ```
 
-> DNS -- Domain Name System
+> **DNS -- Domain Name System**
 >> special server that returns IP addresses from URLs
+>
 >
 > Recursive DNS servers
 >> owned by companies like Google and OpenDNS or your ISP
@@ -227,7 +229,7 @@ whois <domain>
 >>
 >> every domain in the world has its DNS stored on one
 
-* Dig -- does the above, manually
+* Dig -- does the *above*, manually
 
     - ANSWER section obviously important
 
