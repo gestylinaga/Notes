@@ -6,12 +6,14 @@
 
     - [Introduction to Networking](thmIntroNetworking.md)
 
+    - [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
+
 ---
-**Official Links:**
+**External Links:**
 
 * [Official Site](https://tryhackme.com/)
 
-* [Profile](https://tryhackme.com/p/gesteratops)
+* [My Profile](https://tryhackme.com/p/gesteratops)
 
 ---
 [back to Index/Table of Contents](index.md)
