@@ -2,11 +2,9 @@
 
 * [Linux Fundamentals](thmLinuxFundamentals.md) -- Intro to the Linux Operating System
 
-* Networking Fundamentals
+* [Introduction to Networking](thmIntroNetworking.md) -- Networking Fundamentals
 
-    - [Introduction to Networking](thmIntroNetworking.md)
-
-    - [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
+* [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
 
 ---
 **External Links:**
