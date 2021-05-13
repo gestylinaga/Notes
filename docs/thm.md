@@ -4,6 +4,8 @@
 
 * [Introduction to Networking](thmIntroNetworking.md) -- Networking Fundamentals
 
+* [Web Fundamentals](thmWebFundamentals.md) -- HTTP requests/responses, Cookies, and Mini CTF
+
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
 
 ---
