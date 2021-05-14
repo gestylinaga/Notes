@@ -136,6 +136,67 @@ TypeError: can't multiply sequence by non-int of type 'float'
         + underscores_are_preferred
         + thisIsCamelCase
 
+
+## Sample Program
+
+```python
+# This program says hello and asks for my name
+
+print('Hello, world!')
+print('What is your name?')     # asks for their name
+myName = input()
+print('It is good to meet you, ' + myName)
+print('The length of your name is:')
+print(len(myName))
+print('What is your age?')      # asks for their age
+myAge = input()
+print('You will be ' + str(int(myAge) + 1) + ' in a year.')
+```
+
+* Comments done with hash marks '#'
+```python
+# this is a comment
+```
+
+* **print()** -- the print function
+
+    - prints the string value in the parenthesis
+
+    - called *calling* a print function when python runs it
+
+    - the string value 'Hello, World!' is being *passed* to the function
+
+    - values that are passed to a function are called *arguments*
+
+    - can also be used to enter an empty line
+```python
+print('Hello, World!')
+```
+
+* **input()** -- waits for user to input text and press Enter
+
+    - evalutates to a string, whatever the user typed in
+
+    - assigns input to myName variable in example
+```python
+myName - input()
+```
+
+* **len()** -- returns number of characters in string
+```python
+print('The length of your name is:')
+print(len(myName))
+```
+
+* The **str()**, **int()**, and **float()** Functions
+
+    - convert whatever value you pass as a *string*, *integer*, or *float-point* number
+
+```python
+myAge = input()
+print('You will be ' + str(int(myAge) + 1) + ' in a year.')
+```
+
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
 
