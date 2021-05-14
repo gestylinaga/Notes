@@ -4,6 +4,7 @@
 
     - the interactive shell that lets you *execute* Python code
 
+
 ## Expressions:
 ```
 2 + 3
@@ -31,25 +32,37 @@
 +  -- Addition
 ```
 
+
 ## Data Types
 
 * Data Types -- category for values, every value belongs to **exactly** 1 data type
 
-    - int -- Integer
+    - **int** -- Integer
+
+        + 53
+
         + 0
-        + 493
+
         + -39
 
-    - floats -- Floating-Point Number
-        + 3.321
-        + 0.653
+    - **floats** -- Floating-Point Number
+
+        + 3.3
+
+        + 0.65
+
         + -3.693
 
-    - str -- Strings -- text values
+    - **str** -- Strings -- text values
+
         + 'Hello'
+
         + 'fdsjfdskljfas'
+
         + 'text text text'
+
         + ' ' -- Can also be *blank* or *empty*
+
 
 ## String Concatenation and Replication
 
@@ -196,6 +209,7 @@ print(len(myName))
 myAge = input()
 print('You will be ' + str(int(myAge) + 1) + ' in a year.')
 ```
+
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
