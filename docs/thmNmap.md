@@ -349,7 +349,7 @@ nmap --script-help <script-name>
 -f
 ```
 
-* alternative to -f; must be multiple to 8
+* alternative to -f; must be multiple of 8
 
 ```
 --mt <number>
@@ -396,7 +396,7 @@ nmap -sT -Pn -vv -p 0-4999 10.10.127.194
 4. using ftp-anon script on target; succesful login
 
 ```
-nmap --script-ftp-anon 10.10.127.194
+nmap --script=ftp-anon 10.10.127.194
 ```
 
 --- 
