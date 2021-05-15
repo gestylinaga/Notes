@@ -4,13 +4,20 @@
   
 * [Introduction](atbswpIntro.md)
 
-* Part 1:
+* Chapters:
+
     1. [Python Basics](atbswp1.md)
+
     2. [Flow Control](atbswp2.md)
+
     3. Functions
+
     4. Lists
+
     5. Dictionaries and Structuring Data
+
     6. Manipulating strings
+
 ---
 ## Links
 
