@@ -1,10 +1,10 @@
-# Capter 2: Flow Control
+# Chapter 2: Flow Control
 
 *Flow Control Statements* decide which lines of code to execute, under which conditions
 
 ## Boolean Values
 
-* name after mathematician George Boole
+* named after mathematician George Boole
 
 * data type with only 2 possible values: **True** or **False** -- case sensitive
 
@@ -69,7 +69,7 @@ True
 False
 ```
 
-* **not** operator
+* the **not** operator
 
     - only works on 1 Boolean value at a time, making it a *unary* operator
 
