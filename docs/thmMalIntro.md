@@ -6,9 +6,9 @@
 
     - Point of Entry -- PoE; through spam email?
 
-    - any files/processes/*unordinary* communication
+    - any extra files/processes/*unordinary* communication?
 
-    - RAT -- Remote Access Tool; backdoor
+    - RAT -- Remote Access Tool; backdoor?
 
     - can we prevent further infection?
 

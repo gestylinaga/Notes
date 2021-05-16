@@ -106,11 +106,8 @@ True
 ```
 
 * follow Order of Operations too, in order:
-
     1. not
-
     2. and
-
     3. or
 
 
@@ -126,7 +123,7 @@ True
 
 * **Blocks of Code** -- lines of code grouped together
 
-    - indicated by indentation of code
+    - indicated by an indentation of code
 
     - Rules for Blocks of Code:
     
@@ -141,7 +138,7 @@ True
 
 * or simply *execution* -- term for the current instructions being executed
 
-* no always straight down, flow control statements make execution jump all over the code
+* not always straight down, flow control statements make execution jump all over the code
 
 
 ## Flow Control Statements
