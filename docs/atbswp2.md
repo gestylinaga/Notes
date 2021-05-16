@@ -164,6 +164,11 @@ True
 
         + starting on the next line, an indented block of code -- aka the *if clause*
 
+```python
+if name == 'Alice':
+    print('Hi, Alice.')
+```
+
 * **else** statements
 
     - optionally follow *if* statement
@@ -179,6 +184,13 @@ True
         + a colon ":"
 
         + starting on the next line, an indented block of code -- aka the *else clause*
+
+```python
+if name == 'Alice':
+    print('Hi, Alice.')
+else:
+    print('Hello, stranger.')
+```
 
 * **elif** statements
 
@@ -216,6 +228,82 @@ else:
 
 * basically: "if the first condition is true, do this. Else, if the second condition is true, do that. Otherwise, do something else"
 
+* **while** loop statements
+
+    - a while clause will execute as long as the statement is True
+
+    - consist of:
+
+        + the **while** keyword
+
+        +  a condition -- a *True* or *False*
+
+        + a colon ":"
+
+        + starting on the next line, an indented block of code -- aka the *while clause*
+
+    - similar to an *if* statement but 'loops' back to the *while* statement at the end of the clause
+
+    - in while loops, the condition is always checked at the start of each *iteration* -- each time the loop is executed
+
+    - the first time that the condition == false, the while clause is skipped
+
+```python
+spam = 0 
+while spam < 5;
+    print('Hello, world.')
+    spam = spam + 1
+```
+
+* Infinite while loops
+
+    - written poorly, *while statements* can get stuck in infinite loops; common programming bug
+
+    - in the example below, the code will loop back to the beginning if the literal string 'your name' is not entered
+
+```python
+name = ''
+while name != 'your name':
+    print('Please type your name.')
+    name = input()
+print('Thank you!')
+```
+
+* **break** statements
+
+    - shortcut to break out of a while loop
+
+    - when the execution hits a *break* statement, it simply exits the *while* loop
+
+    - simply contains the **break** keyword
+
+```python
+while True:
+    print('Please type your name.')
+    name = input()
+    if name == 'your name':
+        break
+print('Thank you!')
+```
+
+* **continue** statements
+    
+    - used inside *while* loops, similar to *break* statements
+
+    - when execution hits a *continue* statement, it jumps back to the start of the loop and reevaluates the condition
+
+```python
+while True:
+    print('Who are you?')
+    name = input()
+    if name != 'Joe':
+        continue
+    print('Hello, Joe. What is the password?')
+    password = input()
+    if password == 'swordfish':
+        break
+print('Access Granted.')
+```
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
