@@ -19,7 +19,7 @@
 
     - created for a specific purpose, against a specific person
 
-    - see [DarkHotel](https://www.kaspersky.co.uk/resource-center/threats/darkhotel-malware-virus-threat-definition) malware
+    - see [DarkHotel APT via Kaspersky resource-center](https://www.kaspersky.co.uk/resource-center/threats/darkhotel-malware-virus-threat-definition)
 
 * **Mass Campaign**
 
@@ -56,7 +56,7 @@
 
     3. **Maintaining Persistence**
 
-        + not always the case; see [Cerber](https://blog.malwarebytes.com/detections/ransom-cerber/)
+        + not always the case; see [Cerber](https://blog.malwarebytes.com/detections/ransom-cerber/) ransomware
 
     4. **Persistence**
 
@@ -84,7 +84,7 @@
 
                 - in ransomware: where has the Malware contacted for Bitcoin payments?
 
-* see [EternalBlue](https://research.checkpoint.com/2017/eternalblue-everything-know/)
+* see [EternalBlue](https://research.checkpoint.com/2017/eternalblue-everything-know/) -- used in Wannacry malware
 
 
 ## Static vs Dynamic Analysis
