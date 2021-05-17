@@ -10,6 +10,8 @@
 
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
 
+* [Hydra](thmHydra.md) -- a Bruteforce Online Password Cracking Program
+
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
