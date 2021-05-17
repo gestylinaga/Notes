@@ -6,6 +6,8 @@
 
 * [Web Fundamentals](thmWebFundamentals.md) -- HTTP requests/responses, Cookies, and Mini CTF
 
+* [DNS in Detail](thmDNSinDetail.md) -- Domain Hierarchy, Record Types, Making Requests 
+
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
