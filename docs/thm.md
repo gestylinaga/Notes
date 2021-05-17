@@ -1,4 +1,4 @@
-# TryHackMe.com Writeups
+# TryHackMe.com Room Writeups
 
 * [Linux Fundamentals](thmLinuxFundamentals.md) -- Intro to the Linux Operating System
 

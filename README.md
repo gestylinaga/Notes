@@ -1,16 +1,17 @@
 # Notes
 
-[Index | Table of Contents | Start Here](docs/index.md)
+Notes typed in markdown.
 
-* Notes typed in markdown
+Automate the Boring Stuff with Python -- [Book Notes](docs/atbswp.md)
 
-    - Automate the Boring Stuff with Python -- by Al Sweigart
+TryHackMe.com -- [Room Writeups](docs/thm.md)
 
-    - TryHackMe.com -- Room Writeups
+[Index | Table of Contents](docs/index.md)
 
-* by: [Gesty Linaga](https://github.com/gestylinaga/)
+---
 
-    + [see my Wiki](https://github.com/gestylinaga/gestywiki)
+by: [Gesty Linaga](https://github.com/gestylinaga/)
 
+[see my Wiki](https://github.com/gestylinaga/gestywiki)
 
 ![pixel surf](imgs/splash.png)
