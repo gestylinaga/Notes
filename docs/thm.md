@@ -1,5 +1,8 @@
 # TryHackMe.com Room Writeups
 
+
+## Fundamentals
+
 * [Linux Fundamentals](thmLinuxFundamentals.md) -- Intro to the Linux Operating System
 
 * [Introduction to Networking](thmIntroNetworking.md) -- Networking Fundamentals
@@ -8,16 +11,27 @@
 
 * [DNS in Detail](thmDNSinDetail.md) -- Domain Hierarchy, Record Types, Making Requests 
 
+
+## Tools
+
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
 
 * [Hydra](thmHydra.md) -- a Bruteforce Online Password Cracking Program
+
+
+## Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
 
----
-**External Links:**
+
+## Capture the Flags
+
+* [Bounty Hacker](thmBountyHacker.md) -- Cowboy Bebop themed CTF
+
+
+## External Links
 
 * [Official Site](https://tryhackme.com/)
 
