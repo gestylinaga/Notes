@@ -30,7 +30,7 @@
 
 * [Bounty Hacker](thmBountyHacker.md) -- Cowboy Bebop themed CTF
 
-* [Simple CTF](thmSimpleCTF.md) -- Beginner-Level *simple* CTF
+* [Simple CTF](thmSimpleCTF.md) -- Beginner-Level *Simple* CTF
 
 
 ## External Links

