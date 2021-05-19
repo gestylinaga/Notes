@@ -3,16 +3,16 @@
 
 ## Tools
 
-* [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
+* [Nmap](thmNmap.md) -- a Network Mapping/Port Scanning Tool
 
 * [Hydra](thmHydra.md) -- a Bruteforce Online Password Cracking Program
 
 
 ## Capture the Flags
 
-* [Bounty Hacker](thmBountyHacker.md) -- Cowboy Bebop themed CTF
+* [Bounty Hacker](thmBountyHacker.md) -- a Cowboy Bebop themed CTF
 
-* [Simple CTF](thmSimpleCTF.md) -- Beginner-Level *Simple* CTF
+* [Simple CTF](thmSimpleCTF.md) -- a Beginner-Level *Simple* CTF
 
 
 ## Learning
