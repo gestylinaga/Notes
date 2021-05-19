@@ -1,6 +1,5 @@
 # TryHackMe.com Room Writeups
 
-
 ## Tools
 
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
@@ -15,7 +14,9 @@
 * [Simple CTF](thmSimpleCTF.md) -- Beginner-Level *Simple* CTF
 
 
-## Fundamentals
+## Learning
+
+### Fundamentals
 
 * [Linux Fundamentals](thmLinuxFundamentals.md) -- Intro to the Linux Operating System
 
@@ -23,10 +24,11 @@
 
 * [Web Fundamentals](thmWebFundamentals.md) -- HTTP requests/responses, Cookies, and Mini CTF
 
-* [DNS in Detail](thmDNSinDetail.md) -- Domain Hierarchy, Record Types, Making Requests 
+    - [DNS in Detail](thmDNSinDetail.md) -- Domain Hierarchy, Record Types, Making Requests 
 
+    - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
 
-## Malware and Malware Analyis
+### Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
