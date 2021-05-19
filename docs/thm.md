@@ -1,5 +1,6 @@
 # TryHackMe.com Room Writeups
 
+
 ## Tools
 
 * [Nmap](thmNmap.md) -- Network Mapping/Port Scanning Tool
@@ -27,6 +28,8 @@
     - [DNS in Detail](thmDNSinDetail.md) -- Domain Hierarchy, Record Types, Making Requests 
 
     - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
+
+* [Cryptography for Dummies](thmCryptforDummies.md) -- Types of Cryptography, Hashes, and Decoding/Encoding
 
 ### Malware and Malware Analyis
 
