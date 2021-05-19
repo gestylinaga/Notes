@@ -37,7 +37,12 @@
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
 
+### Penetration Testing
 
+* [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
+
+
+---
 ## External Links
 
 * [Official Site](https://tryhackme.com/)
