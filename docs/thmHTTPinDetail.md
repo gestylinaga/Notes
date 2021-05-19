@@ -170,34 +170,34 @@
 * Cookies can be viewed in a browser with the built-in *Developer Tools*
 
 
-## Making Requests - Practical with in-browser Browser
+## Making Requests -- Practical with in-browser Browser
 
-Making a GET request to /room
+Making a GET request to `/room`
 ```
 THM{YOU'RE_IN_THE_ROOM}
 ```
 
-Make a GET request to /blog and using the gear icon set the id parameter to 1 in the URL field
+Make a GET request to `/blog` and using the gear icon set the id parameter to `1` in the URL field
 ```
 THM{YOU_FOUND_THE_BLOG}
 ```
 
-Make a DELETE request to /user/1
+Make a DELETE request to `/user/1`
 ```
 THM{USER_IS_DELETED}
 ```
 
-Make a PUT request to /user/2 with the username parameter set to admin
+Make a PUT request to `/user/2` with the username parameter set to `admin`
 ```
 THM{USER_HAS_UPDATED}
 ```
 
-POST the username of thm and a password of letmein to /login
+POST the username of `thm` and a password of `letmein` to `/login`
 ```
 THM{HTTP_REQUEST_MASTER}
 ```
 
 ---
-[back to TryHackMe main page](index.md)
+[back to TryHackMe main page](thm.md)
 
 [back to Index/Table of Contents](index.md)
