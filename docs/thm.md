@@ -1,6 +1,5 @@
 # TryHackMe.com Room Writeups
 
-
 ## Tools
 
 * [Nmap](thmNmap.md) -- a Network Mapping/Port Scanning Tool
@@ -31,15 +30,20 @@
 
 * [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
 
+
 ### Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
 
+
 ### Encyption/Decryption
 
 * [Cryptography for Dummies](thmCryptforDummies.md) -- Types of Cryptography, Hashes, and Decoding/Encoding
+
+* [Encryption - Crypto 101](thmCrypto101.md) -- an Introduction to encryption, as Part of a Series on Crypto
+
 
 ### Penetration Testing
 
