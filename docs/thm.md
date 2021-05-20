@@ -29,13 +29,15 @@
 
     - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
 
-* [Cryptography for Dummies](thmCryptforDummies.md) -- Types of Cryptography, Hashes, and Decoding/Encoding
-
 ### Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
+
+### Encyption/Decryption
+
+* [Cryptography for Dummies](thmCryptforDummies.md) -- Types of Cryptography, Hashes, and Decoding/Encoding
 
 ### Penetration Testing
 

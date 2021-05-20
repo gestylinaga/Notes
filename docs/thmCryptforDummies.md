@@ -65,7 +65,7 @@ There's a difference between *encoding* and *encrypting*
 
 **Encoded** data just needs to be *decoded*
 
-Example of popular a encoding -- Base64:
+Example of popular a encoding -- **Base64**:
 
 - `hi there` -- `aGkgdGhlcmU=`
 
