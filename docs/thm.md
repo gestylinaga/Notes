@@ -29,6 +29,8 @@
 
     - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
 
+* [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
+
 ### Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
