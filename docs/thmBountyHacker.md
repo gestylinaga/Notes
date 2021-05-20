@@ -31,6 +31,8 @@ Directories found:
 
 found `crew.jpg` in `/images`
 
+![crew.jpg](imgs/crew.jpg)
+
 
 ## FTP
 
