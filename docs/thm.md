@@ -43,6 +43,8 @@
 
 * [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
 
+* [Kenobi](thmKenobi.md) -- a Star Wars themed, Guided CTF covering: Samba Shares, ProFtpd, and Path Variable Manipulation PrivEsc
+
 
 ---
 ## External Links
