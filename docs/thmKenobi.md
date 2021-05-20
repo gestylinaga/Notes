@@ -4,9 +4,6 @@
 export IP=10.10.63.26
 ```
 
-![kenobi.jpg](imgs/kenobi.jpg)
-
-
 ## Scans
 
 ### Nmap
@@ -32,8 +29,6 @@ User-agent: *
 Disallow: /admin.html
 ```
 IT'S A TRAP
-
-![itsatrap.gif](imgs/itsatrap.gif)
 
 ### Samba
 
