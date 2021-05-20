@@ -13,6 +13,12 @@
 
 * [Simple CTF](thmSimpleCTF.md) -- a Beginner-Level *Simple* CTF
 
+### Guided CTFs
+
+* [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
+
+* [Kenobi](thmKenobi.md) -- a Star Wars themed, Guided CTF covering: Samba Shares, ProFtpd, and Path Variable Manipulation PrivEsc
+
 
 ## Learning
 
@@ -30,26 +36,17 @@
 
 * [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
 
-
 ### Malware and Malware Analyis
 
 * [History of Malware](thmHistoryofMalware.md) -- Earliest forms of *Malicious Software*
 
 * [MAL: Malware Introductory](thmMalIntro.md) -- an Intro to Malware and Malware Analysis
 
-
 ### Encyption/Decryption
 
 * [Cryptography for Dummies](thmCryptforDummies.md) -- Types of Cryptography, Hashes, and Decoding/Encoding
 
 * [Encryption - Crypto 101](thmCrypto101.md) -- an Introduction to encryption, as Part of a Series on Crypto
-
-
-### Penetration Testing
-
-* [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
-
-* [Kenobi](thmKenobi.md) -- a Star Wars themed, Guided CTF covering: Samba Shares, ProFtpd, and Path Variable Manipulation PrivEsc
 
 
 ---
