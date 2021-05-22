@@ -21,6 +21,8 @@
 
 * [Kenobi](thmKenobi.md) -- a Star Wars themed, Guided CTF covering: Samba Shares, ProFtpd, and Path Variable Manipulation PrivEsc
 
+* [Vulnversity](thmVulnversity.md) -- a Guided CTF covering the Basics on: Nmap, Gobuster, Burpsuite, PHP Reverse Shells, and PrivEsc
+
 
 ## Learning
 
