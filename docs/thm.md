@@ -11,9 +11,9 @@
 
 * [Bounty Hacker](thmBountyHacker.md) -- a Cowboy Bebop themed CTF
 
-* [Simple CTF](thmSimpleCTF.md) -- a Beginner-Level *Simple* CTF
+* [Simple CTF](thmSimpleCTF.md) -- a Beginner-Level, *Simple* CTF
 
-* [LazyAdmin](thmLazyAdmin.md) -- an Easy Linux Machine, practice CTF
+* [LazyAdmin](thmLazyAdmin.md) -- an Easy Linux Machine, beginner CTF
 
 ### Guided CTFs
 
