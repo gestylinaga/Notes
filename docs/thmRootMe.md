@@ -123,4 +123,4 @@ cat root.txt
 ---
 [back to TryHackMe main page](thm.md)
 
-[back to Index/Table of Contents](index.nd)
+[back to Index/Table of Contents](index.md)
