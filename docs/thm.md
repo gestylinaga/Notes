@@ -15,6 +15,8 @@
 
 * [LazyAdmin](thmLazyAdmin.md) -- an Easy Linux Machine, beginner CTF
 
+* [RootMe](thmRootMe.md) -- a Beginner CTF, CanURootMe? (lol)
+
 ### Guided CTFs
 
 * [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
