@@ -17,6 +17,8 @@
 
 * [RootMe](thmRootMe.md) -- a Beginner CTF, CanURootMe? (lol)
 
+* [Pickle Rick](thmPickleRick.md) -- a Rick & Morty themed CTF
+
 ### Guided CTFs
 
 * [Basic PenTesting](thmBasicPenTesting.md) -- a Guided CTF covering: Bruteforcing, Hash Cracking, Linux/Service Enumeration
