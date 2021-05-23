@@ -6,6 +6,8 @@
 
 * [Hydra](thmHydra.md) -- a Bruteforce Online Password Cracking Program
 
+* [Metasploit](thmMetasploit.md) -- a PenTesting Framework; a Collection of Exploits, and Auxilliary/Post Exploitation Tools
+
 
 ## Capture the Flags
 
