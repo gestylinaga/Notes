@@ -302,6 +302,121 @@ while True:
 print('Access Granted.')
 ```
 
+### for loops and the range() function
+
+- similar to *while* loops, but only execute a *certain* number of times
+
+- Consist of:
+
+    + the **for** keyword
+
+    + a variable name
+
+    + the **in** keyword
+
+    + a call to the **range()** function, with up to 3 integers passed to it
+
+    + a colon ":"
+
+    + starting on the next line, an indented block of code -- aka the *for clause*
+
+```python
+print('My name is')
+
+for i in range(5):
+    print('Jimmy Five Times (' + str(i) + ')')
+```
+
+and an equivalent program written as a **while** loop instead:
+```python
+print('My name is')
+
+i = 0
+while i < 5:
+    print('Jimmy Five Times (' + str(i) + ')')
+    i = i + 1
+```
+
+The 'Carl Friedrich Gauss' math problem as a Python program:
+```python
+total = 0
+for num in range(101):
+    total = total + 1
+print(total)
+```
+
+* The Starting, Stopping, and Stopping Arguments to **range()**
+
+    - some functions, like **range()**, can be called with multiple arguments
+    - the 1st argument is the *Start* value -- where the range starts
+    - the 2nd argument is the *Stop* value -- up to, but not including the number
+    - the 3rd argument is the *Step* value -- the amount variable is increased with each iteration
+
+```python
+for i in range(20, 300, 10):
+    print(i)
+```
+
+* The **range()** function also works with negative numbers to count down:
+```python
+for i in range(10, -5, -1):
+    print(i)
+```
+
+
+## Importing Modules
+
+Python has *built-in* functions like `print()`, `input()`, and `len()`, but more can be *Imported* from the **Standard Library**
+
+Each **Module** from the Standard Library is a Python program itself, containing a group of functions that you can call in your own program
+
+* ie: the `math` module has mathematics related functions
+* ie: the `random` module has random-number related functions
+
+An **Import** statements consists of:
+
+* the `import` keyword
+* the name of the module
+* optionally, more module names, separated by commas
+
+```python
+import random
+
+for i in range(5):
+    print(random.randint(1, 10))
+```
+
+Some example modules:
+```python
+import random, sys, os, math
+```
+
+### from import Statements
+
+An alternative way to call modules with the `for` keyword:
+```python
+from random import *
+
+for i in range(5):
+    print(randint(1, 10))
+```
+
+This saves the trouble of having to type `random.randint` each time, but is less readable
+
+### Ending a Program Early with the sys.exit() function
+
+```python
+import sys
+
+while True:
+    print("Type exit to Exit.")
+    response = input()
+    if response == 'exit':
+        sys.exit()
+    print('You typed ' + response + '.')
+```
+
+
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
 
