@@ -16,9 +16,9 @@ Consist of:
 
 * The *body* of the statement -- the block of code following the `def` statement
 
-* A *function call* -- the name of the function with `()`, possibly with some arguements
+* A *function call* -- the name of the function with `()` appended to the end, possibly with some arguments
 
-Remember: functions are run when they are called, not when they are defined
+Remember: functions are run when they are called, **not** when they are defined
 
 
 ## def Statements with Parameters
@@ -108,10 +108,16 @@ In Python, the value `None` represents the absence of a value
 * just like the Boolean data types (`True` and `False`), `None` must be typed with a capital `P`
 
 ```python
->>> spam = print('Hello!')
+spam = print('Hello!')
+```
+```
 Hello!
+```
 
->>> None == spam
+```python
+None == spam
+```
+```
 True
 ```
 
@@ -132,8 +138,39 @@ Also important to note that a `return` statement without a value, will return `N
 
 ## Keyword Arguments and the print() Function
 
+Most arguments are identified by their position in the function call
+
+* Ex: `random.randint(1, 10)` -- the `1` is the low-end of the range, the `10` is the high-end
+
+    + `random.randint(10, 1)` -- would return an error
+
+**Keyword Arguents** however, are identified by the *keyword* put before them in the function call
+
+* often used for *Optional Parameters*
+
+    - the `print()` function has:
+
+        + the `end` parameter, which specifies what should be printed at the end of the arguments
+
+        + the `sep` parameter, which specifies what should be printed in between the arguments
+
+```python
+print('Hello', end='')
+print('World')
+```
+```
+HelloWorld
+```
+
+```python
+print('cats', 'dogs', 'mice', sep=',')
+```
+```
+cats,dogs,mice
+```
 
 
+## The Call Stack
 
 
 ---
