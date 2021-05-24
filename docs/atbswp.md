@@ -10,7 +10,7 @@
 
     2. [Flow Control](atbswp2.md)
 
-    3. Functions
+    3. [Functions](atbswp3.md)
 
     4. Lists
 
