@@ -1,6 +1,6 @@
 # Automate the Boring Stuff with Python
-## Practical Programming for Total Beginners
-> by Al Sweigart
+> Practical Programming for Total Beginners
+>> by Al Sweigart
   
 * [Introduction](atbswpIntro.md)
 

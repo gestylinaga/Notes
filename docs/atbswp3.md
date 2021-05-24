@@ -40,21 +40,22 @@ hello('Alice')
 
 ### Define, Call, Pass, Argument, Parameter
 
+To Clarify any Confusion:
 ```python
 def sayHello(name):
     print('Hello, ' + name)
 sayHello('Al')
 ```
 
-To *define* a function is to create it -- the `def sayHello(name):` line
+To **define** a function is to create it -- the `def sayHello(name):` line
 
-To *call* a function is to send the execution to the top of the function's code -- the `sayHello('Al')` line
+To **call** a function is to send the execution to the top of the function's code -- the `sayHello('Al')` line
 
-*Passing* is when the string value `'Al'`, is sent to the function -- also the `sayHello('Al')` line
+**Passing** is when the string value `'Al'`, is sent to the function -- also the `sayHello('Al')` line
 
-A value being passed to a function in a function call is an *Argument* -- the argument `Al` being assigned to the `name` variable
+A value being passed to a function in a function call is an **Argument** -- the argument `Al` being assigned to the `name` variable
 
-Variables with arguments are called *Parameters* -- the `name` variable
+Variables with arguments are called **Parameters** -- the `name` variable
 
 
 ## Return Values and Return Statements
