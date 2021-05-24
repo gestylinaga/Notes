@@ -27,10 +27,10 @@ Checking connection to databse:
 db_status
 ```
 
-Metasploit 5 uses a `postgresql` databse
+Metasploit 5 uses a `postgresql` database
 
 
-## Commands
+## Basic Commands
 
 `help` or `?` in the metasploit prompt shows a help menu
 
@@ -61,22 +61,22 @@ Metasploit 5 uses a `postgresql` databse
 
 Metasploit consists of 6 core modules
 
-The `exploit` module:
+The `Exploit` module:
 * most common module utilized
 * holds all of the exploit codes
 
-The `payload` module:
-* used hand-in-hand with `exploits` module
+The `Payload` module:
+* used hand-in-hand with `Exploit` module
 * contains various bits of shellcode to execute following exploitation
 
-The `auxilliary` module:
+The `Auxilliary` module:
 * used in scanning and verification of exploitable machines
 * not the same as actual exploitation
 
-The `post` module:
+The `Post` module:
 * provides capabilities for *looting* and *pivoting* after exploitation
 
-The `encoder` module:
+The `Encoder` module:
 * modifies 'appearance' of exploits
 * helps in payload obfuscation to avoid signature detection
 
@@ -92,6 +92,12 @@ Port Scanning without Nmap:
 ```
 db_nmap -sV <Machine IP> 
 ```
+
+
+## We're in, now what? -- Shell Stabilization, Host Enumeration, and PrivEsc
+
+
+## Makin' Cisco Proud -- Enumerating the Network
 
 
 ---
