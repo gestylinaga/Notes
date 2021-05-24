@@ -60,6 +60,81 @@ Variables with arguments are called **Parameters** -- the `name` variable after 
 
 ## Return Values and Return Statements
 
+**Return Value** --  the value that a *function call* evaluates to
+
+When creating a function using a `def` statement, you can specify what the return value should be with a **Return Statement**
+
+**Return Statements** consist of:
+* the `return` keyword
+* the value/expression that the function should return
+
+```python
+import random
+
+def getAnswer(answerNumber):
+    if answerNumber == 1:
+        return 'It is certain'
+    elif answerNumber == 2:
+        return 'Yes'
+    elif answerNumber == 3:
+        return 'Ask again later'
+    elif answerNumber == 4:
+        return 'My reply is no'
+    elif answerNumber == 5:
+        return 'Outlook is not good'
+
+r = random.randint(1, 5)
+fortune = getAnswer(r)
+print(fortune)
+```
+
+Note that you can pass return values as an argument to another function call, meaning you can rewrite the last 3 lines as:
+```python
+print(getAnswer(random.randint(1, 5)))
+```
+
+Remember that *expressions* are composed of values and operators,
+meaning a function call can be used in an expression because the call evaluates to its return value
+
+
+## The None Value
+
+In Python, the value `None` represents the absence of a value
+
+* the `None` value is the only value of the *NoneType* data type
+
+* other programming languages might call it `null`, `nil`, or `undefined`
+
+* just like the Boolean data types (`True` and `False`), `None` must be typed with a capital `P`
+
+```python
+>>> spam = print('Hello!')
+Hello!
+
+>>> None == spam
+True
+```
+
+* helpful when you need to store something that won't be confused for a real value in a variable
+
+* ie: the return value for `print()`
+
+    + the `print()` function displays text on the screen, but doesn't need a return value like `len()` or `input()` do
+
+    + but since all functions need to evaluate to a return value, `print()` returns `None`
+
+Python automatically adds `return None` to to end of any function definition with no return statement
+
+This is similar to how a `while` or `for` loop implicitly ends with a `continue` statement, even if one isn't supplied
+
+Also important to note that a `return` statement without a value, will return `None`
+
+
+## Keyword Arguments and the print() Function
+
+
+
+
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
