@@ -44,7 +44,11 @@
 
     - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
 
+### Scripting
+
 * [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
+
+* [Regular Expressions](thmRegex.md) -- or Regex, Patterns of Text to Search Exactly What You're Looking for
 
 ### Malware and Malware Analyis
 
