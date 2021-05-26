@@ -107,17 +107,15 @@ In Python, the value `None` represents the absence of a value
 
 * just like the Boolean data types (`True` and `False`), `None` must be typed with a capital `P`
 
-```python
-spam = print('Hello!')
 ```
-```
+>>> spam = print('Hello!')
+
 Hello!
 ```
 
-```python
-None == spam
 ```
-```
+>>> None == spam
+
 True
 ```
 
@@ -154,18 +152,16 @@ Most arguments are identified by their position in the function call
 
         + the `sep` parameter, which specifies what should be printed in between the arguments
 
-```python
-print('Hello', end='')
-print('World')
 ```
-```
+>>> print('Hello', end='')
+    print('World')
+
 HelloWorld
 ```
 
-```python
-print('cats', 'dogs', 'mice', sep=',')
 ```
-```
+>>> print('cats', 'dogs', 'mice', sep=',')
+
 cats,dogs,mice
 ```
 
