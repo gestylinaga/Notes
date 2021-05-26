@@ -105,7 +105,7 @@ In Python, the value `None` represents the absence of a value
 
 * other programming languages might call it `null`, `nil`, or `undefined`
 
-* just like the Boolean data types (`True` and `False`), `None` must be typed with a capital `P`
+* just like the Boolean data types (`True` and `False`), `None` must be typed with a capital `N`
 
 ```
 >>> spam = print('Hello!')
