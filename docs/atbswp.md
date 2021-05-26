@@ -2,21 +2,21 @@
 > Practical Programming for Total Beginners
 >> by Al Sweigart
   
-* [Introduction](atbswpIntro.md)
+[Introduction](atbswpIntro.md)
 
-* Chapters:
+Chapters:
 
-    1. [Python Basics](atbswp1.md)
+1. [Python Basics](atbswp1.md)
 
-    2. [Flow Control](atbswp2.md)
+2. [Flow Control](atbswp2.md)
 
-    3. [Functions](atbswp3.md)
+3. [Functions](atbswp3.md)
 
-    4. Lists
+4. Lists
 
-    5. Dictionaries and Structuring Data
+5. Dictionaries and Structuring Data
 
-    6. Manipulating strings
+6. Manipulating strings
 
 ---
 ## Links
