@@ -19,11 +19,11 @@ Questions:
 * Name the key term of what a "crawler" is used to do:
     - `index`
 
-    * What is the naem of the technique that "Search Engines" use to retrieve this info about websites?
-        - `crawling`
+* What is the name of the technique that "Search Engines" use to retrieve this info about websites?
+    - `crawling`
 
-        * What is an example of the type of contents that could be gathered from a website? 
-            - `keywords`
+* What is an example of the type of contents that could be gathered from a website? 
+    - `keywords`
 
 
 ## Search Engine Optimisation
