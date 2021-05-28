@@ -44,6 +44,8 @@
 
     - [HTTP in Detail](thmHTTPinDetail.md) -- Requests/Responses, Status Codes, Headers, and Cookies
 
+* [Google Dorking](thmGoogleDorking.md) -- How Search Engines Work, and Using Them to Find Hidden Content
+
 ### Scripting
 
 * [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
