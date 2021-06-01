@@ -46,6 +46,8 @@
 
 * [Google Dorking](thmGoogleDorking.md) -- How Search Engines Work, and Using Them to Find Hidden Content
 
+* [Intro to x86-64](thmIntroTox86-64.md) -- Basics of x86-64 Assembly Language
+
 ### Scripting
 
 * [Bash Scripting](thmBashScripting.md) -- Basic Syntax: Variables, Debugging, Parameters, Arrays, and Conditionals
