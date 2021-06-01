@@ -13,6 +13,26 @@ Things to Note:
 
 ## Introduction
 
+Computers execute **Machine Code**, which is encoded as bytes, to carry out computer tasks
+
+Machine code is usually represented in a more redable form of the code, called **Assembly Code**
+
+Machine code is usually produced by a *compiler*, which takes the source code of a 
+file, and after going through some intermediate stages, produces machine code that can be executed
+by a computer
+
+Intel started out with a 16-bit instruction set, followed by 32-bit, and finally 64-bit (which 
+are all backwards compatible)
+
+Before an executable file is produced:
+* the source code is compiled into assembly -- .s files
+* the assembler converts it into an object program -- .o files
+* operations with a linker finally make it an executable
+
+radare2 -- a framework for reverse engineering/analysing binaries
+* used to *disassemble* binaries -- translate machine code to assembly, which is actually readable
+* also used to debug said binaries -- by allowing a user to step through and view the state of the program
+
 
 ## If Statements
 
