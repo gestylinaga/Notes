@@ -85,16 +85,47 @@ Questions:
     - `cat\.xyz`
 
 * Match all of the following domain names: cat.xyz, cats.xyz, hats.xyz
-    -
+    - `[ch]ats?\.xyz`
 
 * Match every 4-letter string that doesn't end in any letter from n to z
     - `...[^n-z]`
 
 * Match bat, bats, hat, hats, but not rat or rats (use the hat symbol)
-    - 
+    - `[^r]ats?`
 
 
-## Metacharacters and Repititions
+## Metacharacters and Repetitions
+
+An easier way to match bigger charsets:
+* `\d` matches a digit, like `9`
+* `\D` matches a non-digit, like `A` or `@`
+* `\w` matches an alphanumeric character, like `a` or `3`
+* `\W` matches a non-alphanumeric character, like `!` or `#`
+* `\s` matches a whitespace character, like spaces, tabs, and line breaks
+* `\S` matches everything else (alphanumeric characters and symbols)
+
+Note that `_` underscores are included in the `\w` metacharacter, and not in `\W`
+
+**Repititions** are used to find patterns of many characters of a single type in a row
+
+ie: `z{2}` will match exactly `zz`
+
+For Reference:
+* `{12}` -- exactly 12 times
+* `{1,5}` -- 1 to 5 times
+* `{2,}` -- 2 or more times
+* `*` -- 0 or more times
+* `+` -- 1 or more times
+
+Questions:
+* Match the following word: catssss
+    - `cats{4}`
+
+* Match all of the following words (use the * sign): Cat, cats, catsss
+    - `[Cc]ats*`
+
+* Match all of the following sentences (use the + sign): regex go br, regex go brrrrrr
+    - `regex go br+`
 
 
 ## Starts with/ ends with, groups, and either/ or
