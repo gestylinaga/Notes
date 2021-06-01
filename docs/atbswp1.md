@@ -1,27 +1,28 @@
 # Chapter 1: Python Basics
 
-* REPL -- Read-Evaluate-Print Loop
+**REPL** -- Read-Evaluate-Print Loop
 
-    - the interactive shell that lets you *execute* Python code
+* the interactive shell that lets you *execute* Python code
 
 
 ## Expressions:
-```
+```python
 2 + 3
 ```
-- 2 and 3 are considered *values*
 
-- the '+' is the *operator*
+* `2` and `3` are considered *values*
 
-- expressions can always *evaluate* down to a single value
+* the `+` is the *operator*
 
-    + meaning you can use expressions anywhere you can use values
+* expressions can always *evaluate* down to a single value
 
-    + single values with no operators are still considered values, they just evaluate to themselves
+    - meaning you can use expressions anywhere you can use values
 
-    + Order of Operations (PEMDAS), or *precedence* applies here
+    - single values with no operators are still considered values, they just evaluate to themselves
 
-- Operators in order of precedence
+    - Order of Operations (PEMDAS), or *precedence* applies here
+
+* Operators in order of precedence:
 ```
 ** -- Exponent
 %  -- Modulus/remainder
@@ -35,40 +36,40 @@
 
 ## Data Types
 
-* Data Types -- category for values, every value belongs to **exactly** 1 data type
+**Data Types** -- category for values; every value belongs to **exactly** 1 data type
 
-    - **int** -- Integer
+- **int** -- Integer:
 
-        + 53
+    + `53`
 
-        + 0
+    + `0`
 
-        + -39
+    + `-39`
 
-    - **floats** -- Floating-Point Number
+- **floats** -- Floating-Point Number:
 
-        + 3.3
+    + `3.3`
 
-        + 0.65
+    + `0.65`
 
-        + -3.693
+    + `-3.693`
 
-    - **str** -- Strings -- text values
+- **str** -- Strings -- text values:
 
-        + 'Hello'
+    + `'Hello'`
 
-        + 'fdsjfdskljfas'
+    + `'fdsjfdskljfas'`
 
-        + 'text text text'
+    + `'text text text'`
 
-        + ' ' -- Can also be *blank* or *empty*
+    + `' '` -- Can also be *blank* or *empty*
 
 
 ## String Concatenation and Replication
 
-* operators change meaning depending on the data type of a value
+Operators change meaning depending on the data type of a value
 
-* '+' when used on 2 strings joins them as the *string concatenation* operator
+`+` when used on 2 strings joins them as the *String Concatenation* operator
 ```
 >>> 'Alice' + 'Bob'
 'AliceBob'
@@ -81,13 +82,13 @@
 TypeError: can only concatenate str (not "int") to str
 ```
 
-* '*' works on strings **and** integers together as a *string replication* operator
+* `*` works on strings **and** integers together as a *String Replication* Operator
 ```
 >>> 'Alice' * 3
 'AliceAliceAlice'
 ```
 
-* '*' won't work on 2 strings or a string/float combo
+* `*` won't work on 2 strings or a string/float combo
 ```
 >>> 'Alice' * 'Bob'
 
@@ -102,9 +103,9 @@ TypeError: can't multiply sequence by non-int of type 'float'
 
 ## Storing Values in Variables
 
-* Variable -- like a box in the computer's memory for storing a single value
+**Variable** -- like a box in the computer's memory for storing a single value
 
-* Assignment Statement -- variable name, *assignment operator*, value to be stored
+**Assignment Statement** -- variable name, *Assignment Operator*, and value to be stored
 ```
 >>> spam = 64
 >>> spam
@@ -115,9 +116,9 @@ TypeError: can't multiply sequence by non-int of type 'float'
 100
 ```
 
-* A variable is *initialized* aka created the first time a value is stored in it
+A variable is *initialized* aka created the first time a value is stored in it
 
-* Assigning a new value to a variable is *overwriting* it
+Assigning a new value to a variable is *Overwriting* it:
 ```
 >>> spam = 'hello'
 >>> spam
@@ -128,32 +129,32 @@ TypeError: can't multiply sequence by non-int of type 'float'
 'later'
 ```
 
-* Variable naming rules:
+Variable naming rules:
 
-    - can only be 1 word, no spaces
+* can only be 1 word, no spaces
 
-    - only letters, numbers, or an underscore '_'
+* only letters, numbers, or an underscore `_`
 
-    - can't begin with a number
+* can't begin with a number
 
-    - Case-Sensitive
+* Case-Sensitive
 
-* Variable Name common conventions:
+Variable Name common conventions:
 
-    - starting variable names with a lowercase letter
-        + variable1
-        + like_this
-        + orLikeThis
+* starting variable names with a lowercase letter:
+    - `variable1`
+    - `like_this`
+    - `orLikeThis`
 
-    - underscores are preferred to *camelcase*
-        + underscores_are_preferred
-        + thisIsCamelCase
+* underscores are preferred to *CamelCase*:
+    - `underscores_are_preferred`
+    - `thisIsCamelCase`
 
 
 ## Sample Program
 
 ```python
-# This program says hello and asks for my name
+# This program says hello and asks for their name
 
 print('Hello, world!')
 print('What is your name?')     # asks for their name
@@ -166,18 +167,18 @@ myAge = input()
 print('You will be ' + str(int(myAge) + 1) + ' in a year.')
 ```
 
-* Comments done with hash marks '#'
+* Comments done with hash marks `#`
 ```python
 # this is a comment
 ```
 
-* **print()** -- the print function
+* `print()` -- the print function
 
     - prints the string value in the parenthesis
 
-    - called *calling* a print function when python runs it
+    - termed *calling* a print function when python runs it
 
-    - the string value 'Hello, World!' is being *passed* to the function
+    - the string value `'Hello, World!'` is being *passed* to the function
 
     - values that are passed to a function are called *arguments*
 
@@ -186,22 +187,22 @@ print('You will be ' + str(int(myAge) + 1) + ' in a year.')
 print('Hello, World!')
 ```
 
-* **input()** -- waits for user to input text and press Enter
+* `input()` -- waits for user to input text and press Enter
 
     - evalutates to a string, whatever the user typed in
 
-    - assigns input to myName variable in example
+    - assigns input to `myName` variable in example
 ```python
 myName - input()
 ```
 
-* **len()** -- returns number of characters in string
+* `len()` -- returns number of characters in string
 ```python
 print('The length of your name is:')
 print(len(myName))
 ```
 
-* The **str()**, **int()**, and **float()** Functions
+* The `str()`, `int()`, and `float()` Functions
 
     - convert whatever value you pass as a *string*, *integer*, or *float-point* number
 
