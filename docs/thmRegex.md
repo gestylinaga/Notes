@@ -127,6 +127,18 @@ Questions:
 * Match all of the following sentences (use the + sign): regex go br, regex go brrrrrr
     - `regex go br+`
 
+* Match all of the following filenames: ab0001, bb0000, abc1000, cba0110, c0000 (don't use a metacharacter)
+    - `[abc]{1,3}[01]{4}`
+
+* Match all of the following filenames: File01, File2, file12, File20, File99
+    - `[Ff]ile\d{1,2}`
+
+* Match all of the following folder names: kali tools, kali     tools
+    - `kali\s+tools`
+
+* Match all of the following filenames: notes~, stuff@, gtfob#, lmaoo!
+    - `\w{5}\W`
+
 
 ## Starts with/ ends with, groups, and either/ or
 
