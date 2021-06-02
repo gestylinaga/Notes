@@ -43,7 +43,7 @@ Which can also be used with ranges to exclude whole charsets
 
 `[^a-c]at` will match `fat` and `hat`, but not `bat` or `cat`
 
-Questions:
+Tasks:
 * Match all of the following characters: c, o, g
     - `[cog]`
 
@@ -74,7 +74,7 @@ Note to search for a literal `.` dot, you have to *excape* it with a `\` reverse
 
 so searching for `a\.c` will match **just** `a.c`
 
-Questions:
+Tasks:
 * Match all of the following words: Cat, fat, hat, rat
     - `.at`
 
@@ -117,7 +117,7 @@ For Reference:
 * `*` -- 0 or more times
 * `+` -- 1 or more times
 
-Questions:
+Tasks:
 * Match the following word: catssss
     - `cats{4}`
 
@@ -139,8 +139,62 @@ Questions:
 * Match all of the following filenames: notes~, stuff@, gtfob#, lmaoo!
     - `\w{5}\W`
 
+* Match the string in quotes (use the * sign and the \s, \S metacharacters): "2f0h@f0j0%!     a)K!F49h!FFOK"
+    - `\S*\s*\S*`
+
+* Match every 9-character string (with letters, numbers, and symbols) that doesn't end in a "!" sign
+    - `\S{8}[^!]`
+
+* Match all of these filenames (use the + symbol): .bash_rc, .unnecessarily_long_filename, and note1
+    - `\.?\w+`
+
 
 ## Starts with/ ends with, groups, and either/ or
+
+`^` -- for patterns at the **beginning** of a line
+
+`$` -- for patterns at the **end** of a line
+
+ie: to search for a line that **starts with** `abc`, you can use `^abc`
+
+ie: to search for a line that **ends with** `xyz`, you can use `xyz$`
+
+Note that `^` and `[^]` are very different:
+* `^` outside of brackets means *beginning of a word*
+* `[^]` inside brackets means *exclude a charset*
+
+`(`Parentheses`)` are used to define **Groups**
+* can be used to define an either/or pattern
+* `|` pipe symbol used as the *or* in regex
+
+ie: the pattern `during the (day|night)` will match both `during the day` and `during the night`
+
+ie: the pattern `(no){5}` will match the sentence `nonononono`
+
+Tasks:
+* Match every string that starts with "Password:" followed by any 10 characters excluding "0"
+    - `^Password:[^0]{10}`
+
+* Match "username: " in the beginning of a line (note the space!)
+    - `^username:\s`
+
+* Match every line that doesn't start with a digit (use a metacharacter)
+    - `^\D`
+
+* Match this string at the end of a line: EOF$
+    - `EOF\$$`
+
+* Match the following sentences: "I use nano", and "I use vim"
+    - `I use (nano|vim)`
+
+* Match all lines that start with $, followed by any single digit, followed by $, followed by one or more non-whitespace characters
+    - `\$\d\$\S+`
+
+* Match every possible IPv4 IP address (use metacharacters and groups)
+    - `(\d{1,3}\.){3}\d{1,3}`
+
+* Match all of these emails while also adding the username and the domain name (not the TLD) in separate groups (use \w): hello@tryhackme.com, username@domain.com, dummy_email@xyz.com
+    - `(\w+)@(\w+)\.com`
 
 
 ---
