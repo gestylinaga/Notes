@@ -16,7 +16,7 @@ Consist of:
 
 * The *body* of the statement -- the block of code following the `def` statement
 
-* A *function call* -- the name of the function with `()` appended to the end, possibly with some arguments
+* A **Function Call** -- the name of the function with `()` appended to the end, possibly with some arguments
 
 Remember: functions are run when they are called, **not** when they are defined
 
@@ -167,6 +167,23 @@ cats,dogs,mice
 
 
 ## The Call Stack
+
+Think of function calls like a meandering conversation...
+
+New topics are added on top of a *stack*, while the original topic gets *pushed* to the bottom
+
+Python will remember which line of code called the function and return to it after encountering a `return` statement
+
+**The Call Stack** is how Python remembers *where* to return to
+* This is handled *behind-the-scenes*, meaning there's nothing stored in a variable
+* Python creates a *frame object*, and places it on top of the *Stack*
+* **Frame Objects** store the line number of the original function call -- a place to return to
+* When a function call returns, Python removes the *frame object*, and moves execution to the line stored in it
+
+Note that frame objects are **always** added/removed from the *top* of the stack, nowhere else
+
+
+## Local and Global Scopes
 
 
 ---
