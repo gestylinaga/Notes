@@ -185,6 +185,102 @@ Note that frame objects are **always** added/removed from the *top* of the stack
 
 ## Local and Global Scopes
 
+Parameters/Variables that are assigned inside a function exist *only* in that function's **Local Scope**: -- termed *local variables*
+
+Variables that are assigned outside of *all* functions exist in the **Global Scope** -- termed *global variables*
+
+Think of a **Scope** like a *container* for variables:
+* when a scope is destroyed, all the values stored in its variables are forgotten
+* there is **only 1** global scope, and it is created when the program begins
+* a local scope is created whenever a function is called
+    - when the function returns, the local scope is destroyed, and all variables are forgotten
+    - the next time you call the function, the variables are reset, as if you never called it
+* local variables are also stored in frame objects on the call stack
+
+Why Scopes Matter:
+* code in the global scope, **can't** access any local variables
+* however, code in a local scope **can** access global variables
+* code in a specific function's local scope, **cannot** access variables in any other local scope
+* you can use the same name for different variables if they are in different scopes
+    - ie: a *local* variable named `spam` and a *global* variable named `spam` is ok
+
+Python has different scopes to limit the amount of code modified by any particular function
+
+This makes debugging easier -- if a bug is caused by a local variable, you can infer the function is written incorectly
+
+Using global variables in a small program is fine, but relying on too many is a bad habit as projects get larger
+
+### Examples
+Local Variables **Cannot** be Used in the Global Scope:
+```python
+def spam()
+    eggs = 324423
+spam()
+print(eggs)
+```
+this returns an **error**
+
+Local Scopes **Cannot** use Variables in Other Local Scopes:
+```python
+def spam():
+    eggs = 3469
+    bacon()
+    print(eggs)
+
+
+def bacon():
+    ham = 32131
+    eggs = 0
+
+
+spam()
+```
+this returns an **error**
+
+Global Variables **can** be Read from a Local Scope:
+```python
+def spam():
+    print(eggs)
+eggs = 42
+spam()
+print(eggs)
+```
+this is **fine**
+
+Local and Global Variables with the Same Name:
+```python
+def spam():
+    eggs = 'spam local'
+    print(eggs) # prints 'spam local'
+
+
+def bacon():
+    eggs = 'bacon local'
+    print(eggs) # prints 'bacon local'
+    spam()
+    print(eggs) # prints 'bacon local'
+
+
+eggs = 'global'
+bacon()
+print(eggs) # prints 'global'
+```
+this is **fine**
+
+
+## The Global Statement
+
+**Global Statement** -- used to modify a global variable from within a function
+```python
+def spam():
+    global eggs
+    eggs = 'spam'
+
+eggs = 'global'
+spam()
+print(eggs)
+```
+
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
