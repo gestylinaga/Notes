@@ -280,6 +280,68 @@ eggs = 'global'
 spam()
 print(eggs)
 ```
+This final `print()` call will output: `spam` instead of `global`
+
+Rules for Determining Local/Global Scope:
+* if a variable is used in the global scope (outside of all functions), then it is **always** a global variable
+* if there is a `global` statement for that variable in a function, it is a global variable
+* otherwise, if the variable is used in an *assignment statement* in the function, it is a local variable
+* but if the variable is not used in an *assignment statement*, it is a global variable
+
+In a function, a variable will either **always** be global, or **always** be local
+
+also note: if you ever want to modify the value stored in a global variable from in a function, 
+you **must** use a `global` statement on that variable
+
+Don't forget to assign values to local variables before trying to use them:
+```python
+def spam():
+    print(eggs) # ERROR!
+    eggs = 'spam local'
+
+eggs = 'global'
+spam()
+```
+this causes an error because the local variable `eggs` appears in the `spam` function, which makes it
+appear local, but because `print(eggs)` is executed before `eggs` is assigned anything, the local 
+variable `eggs` doesn't exist yet.
+
+Python will **not** fall back to using the global `eggs` variable in the above example
+
+
+## Exception Handling
+
+Getting an error, or **exception**, in Python usually means your entire program will crash
+
+This program will attempt to divide by 0 and crash:
+```python
+def spam(divideBy):
+    return 42 / divideBy
+
+print(spam(2))
+print(spam(12))
+print(spam(0))
+print(spam(1))
+```
+
+Errors can be handled with `try` and `except` statements:
+* code that could potentially have an error is put in a `try` clause
+* program execution moves to the start of a following `except` clause if an error happens
+
+The same program using `try` and `except` to handle any errors:
+```python
+def spam(divideBy):
+    try:
+        return 42 / divideBy
+    except ZeroDivisionError:
+        print('Error: Invalid argument.')
+
+print(spam(2))
+print(spam(12))
+print(spam(0))
+print(spam(1))
+```
+this will handle any `ZeroDivisionErrors`, and continue on to run like normal
 
 
 ---
