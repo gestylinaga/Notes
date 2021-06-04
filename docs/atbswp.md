@@ -12,7 +12,7 @@ Chapters:
 
 3. [Functions](atbswp3.md)
 
-4. Lists
+4. [Lists](atbswp4.md)
 
 5. Dictionaries and Structuring Data
 
