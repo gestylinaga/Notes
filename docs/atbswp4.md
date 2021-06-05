@@ -82,12 +82,45 @@ would return `3`
 
 ### Changing Values in a List with Indexes
 
+Usually, variables are assigned like this: `spam = 42`
+
+However, you can use an index of a list to change the value at that index:
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+```
+so the command: `spam[2] = 'aardvark'` would overwrite `'rat'` with `'aardvark'`
+
+or the command: `spam[0] = spam[3]` would overwrite `'elephant'` with `'cat'`
+
 ### List Concatenation and List Replication
+
+Lists can be concatenated and replicated just like strings
+* the `+` operator combines 2 lists to create a new list value
+* the `*` operator with a list and an integer replicate the list
+
+so `[1, 2, 3] + ['A', 'B', 'C']` would return `[1, 2, 3, 'A', 'B', 'C']`
+
+and `['X', 'Y', 'Z'] * 3` would return `['X', 'Y', 'Z', 'X', 'Y', 'Z', 'X', 'Y', 'Z']`
 
 ### Removing Values from Lists with del Statements
 
+the `del` statement is used to delete values at an index in a list
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+
+del spam[1]
+```
+this deletes the item `'bat'` and moves everything in list after it up 1 index
+
+so running the command `del spam[1]` again, would delete `'rat'`, because it is **now** at index 1
+
+note that the `del` keyword can be used to delete stand-alone variables too, but in practice this 
+is rarely used
+
 
 ## Working with Lists
+
+Lists alleviate the need to store multiple, similar values into multiple, similar variables
 
 
 ---
