@@ -169,7 +169,7 @@ for i in range(4):
     print(i)
 ```
 would return:
-```python
+```
 0
 1
 2
@@ -192,7 +192,7 @@ for i in range(len(supplies)):
     print('Index ' + str(i) + ' in supplies is: ' + supplies[i])
 ```
 would return:
-```python
+```
 Index 0 in supplies is: pens
 Index 1 in supplies is: staplers
 Index 2 in supplies is: flamethrowers
