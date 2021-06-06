@@ -209,6 +209,151 @@ contains
 
 The `in` and `not in` operators are used to determine whether a value is or isn't in a list
 
+Just like other operators, `in` and `not in` are used in expressions and connect 2 values:
+* a value to look for in a list
+* the list where it may be found
+
+These expressions will evaluate too a boolean value:
+```python
+'howdy' in ['hello', 'hi', 'howdy', 'heyas']
+```
+this will return `True`
+
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+
+'cat' not in spam
+```
+this will return `False`
+
+Sample Program: myPets.py
+```python
+myPets = ['Cody', 'Mookie', 'ChaCha', 'Nollie']
+print('Enter a pet name:')
+name = input()
+if name not in myPets:
+    print('I do not have a pet named ' + name)
+else:
+    print(name + ' is my pet.')
+```
+
+### The Multiple Assignment Trick
+
+aka **tuple unpacking**, is a shortcut that lets you assign multiple variables with the values
+in a list in one line of code
+
+So instead of doing:
+```python
+cat = ['fat', 'gray', 'loud']
+
+size = cat[0]
+color = cat[1]
+disposition = cat[2]
+```
+
+You can do:
+```python
+cat = ['fat', 'gray', 'loud']
+
+size, color, disposition = cat
+```
+Note that the number of variables and the length of the list **must be exactly equal**, or Python
+will return a `ValueError`
+
+### Using the enumerate() Function with Lists
+
+The `enumerate()` function can be used instead of `range(len(someList))` when using a `for` loop
+to obtain the integer index of the items on the list
+
+The same program from "Using for Loops with Lists" section using `enumerate()`:
+```python
+supplies = ['pens', 'staplers', 'flamethrowers', 'binders']
+for index, item in enumerate(supplies):
+    print('Index ' + str(index) + ' in supplies is: ' + item)
+```
+
+Just like as before, this will return:
+```
+Index 0 in supplies is: pens
+Index 1 in supplies is: staplers
+Index 2 in supplies is: flamethrowers
+Index 3 in supplies is: binders
+```
+
+`enumerate()` functions are useful when you need **both** the item and the item's index in
+the loop's block
+
+### Using the random.choice() and random.shuffle() Functions with Lists
+
+The `random.choice()` function will return a randomly selected item from the list:
+```python
+import random
+pets = ['Dog', 'Cat', 'Mouse']
+random.choice(pets)
+```
+This will return `'Dog'`, `'Cat'`, or `'Mouse'` picked at random
+
+You can consider `random.choice(someList)` to be a shorter form of `someList[random.randint(0, len(someList) - 1]`
+
+The `random.shuffle()` function reorders the items in a list:
+```python
+import random
+people = ['Alice', 'Bob', 'Carol', 'David']
+random.shuffle(people)
+```
+This function modifies the list *in place*, rather than returning a new list
+
+
+## Augmented Assignment Operators
+
+Recall that working with variables is usually done like:
+```python
+spam = 42
+spam = spam + 1
+spam
+```
+
+**Augmented Assignment Operators** are a shortcut to do the same thing:
+```python
+spam = 42
+spam += 1
+spam
+```
+
+**Equivalent Assignment Statements:**
+| Augmented | Assignment | Operators |
+| --- | :---: | --- |
+| `spam += 1` | == | `spam = spam + 1` |
+| `spam -= 1` | == | `spam = spam - 1` |
+| `spam *= 1` | == | `spam = spam * 1` |
+| `spam /= 1` | == | `spam = spam / 1` |
+| `spam %= 1` | == | `spam = spam % 1` |
+
+Note that the `+=` operator can also do string/list concatenation:
+```python
+spam = 'Hello,'
+spam += ' world!'
+spam
+```
+this returns `'Hello, world!'`
+
+Also note that the `*=` operator can do string/list replication:
+```python
+bacon = ['lol']
+bacon *= 3
+bacon
+```
+this returns `['lol', 'lol', 'lol']`
+
+
+## Methods
+
+a **method** is the same thing as a function, except it is *called on* a value
+
+note that each data type has its own set of methods
+
+### Finding a Value in a List with the index() Method
+
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
