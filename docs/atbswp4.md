@@ -354,6 +354,100 @@ note that each data type has its own set of methods
 
 ### Finding a Value in a List with the index() Method
 
+List value have an `index()` method that can be passed a value, and if that value exists in the
+list, the index of the value is returned:
+```python
+spam = ['hello', 'hi', 'howdy', 'heyas']
+spam.index('hello')
+```
+this returns a `0` because `'hello'` is item 0 in the index 
+
+If the value isn't in the list, then it produces a `ValueError`:
+```python
+spam.index('hey there')
+```
+run on the list above, this returns `ValueError` becauase `'hey there'` is not in list `spam`
+
+Note that when there are duplicates of a value in a list, the index of the **first** appearance
+is returned
+
+### Adding Values to Lists with the append() and insert() Methods
+
+The `append()` method is used to add new values to a list: (at the end of the list)
+```python
+spam = ['cat', 'dog', 'bat']
+spam.append('moose')
+spam
+```
+this returns a new list: `['cat', 'dog', 'bat', 'moose']`
+
+Similarly, the `insert()` method can insert a value at any index in the list:
+```python
+spam = ['cat', 'dog', 'bat']
+spam.insert(1, 'chicken')
+spam
+```
+* this will return a new list: `['cat', 'chicken', 'dog', 'bat']`
+* the first argument, `1`, is the index for the new value
+* the second argument, `'chicken'`, is the new value to be inserted
+
+Notice that the code is `spam.append('moose')` and `spam.insert(1, 'chicken')`, and **NOT**
+`spam = spam.append('moose')` or `spam = spam.insert(1, 'chicken')`
+
+This is because `append()` and `insert()` return the value `None`, and only modify the list
+*in place*
+
+Note that `append()` and `insert()` only work on lists, no other values
+
+### Removing Values from Lists with the remove() Method
+
+The `remove()` method is passed the value to be removed from the list it is called on:
+```python
+spam = ['cat', 'bat', 'rat', 'elephant']
+spam.remove('bat')
+spam
+```
+* this returns: `['cat', 'rat', 'elephant']`
+* attempting to delete a value that does not exist results in a `ValueError`
+* if a value appears multiple times, only the **first** instance is removed
+
+Note that the `del` statement is good to use when you know the **index** of the value you want to
+remove. In contrast, the `remove()` method is useful when you know tha **value** you want to remove
+
+### Sorting the Values in a List with the sort() Method
+
+The `sort()` method can be used to sort lists of number values or lists of strings:
+```python
+spam = [2, 5, 3.14, 1, -7]
+spam.sort()
+spam
+```
+this returns: `[-7, 1, 2, 3.14, 5]`
+
+```python
+spam = ['ants', 'cats', 'dogs', 'badgers', 'elephants']
+spam.sort()
+spam
+```
+this returns: `['ants', 'badgers', 'cats', 'dogs', 'elephants']`
+
+You can also pass `True` for the `reverse` keyword to sort the values in reverse order:
+```python
+spam = ['ants', 'cats', 'dogs', 'badgers', 'elephants']
+spam.sort(reverse=True)
+spam
+```
+this returns: `['elephants', 'dogs', 'cats', 'badgers', 'ants']`
+
+Things to note about `sort()`:
+* sorts lists *in place*, **do not** try to capture the return with `spam = spam.sort()`, it won't work
+* you **cannot** sort lists with both number values *and* string values in them
+* uses "ASCIIbetical order" rather than actual alphabetical order
+    - upper case letters come before lowercase letters
+    - for normal alphabetical order: `spam.sort(key=str.lower)`
+
+### Reversing the Values in a List with the reverse() Method
+
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
