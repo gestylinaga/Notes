@@ -5,17 +5,12 @@
 [Introduction](atbswpIntro.md)
 
 Chapters:
-
 1. [Python Basics](atbswp1.md)
-
 2. [Flow Control](atbswp2.md)
-
 3. [Functions](atbswp3.md)
-
 4. [Lists](atbswp4.md)
-
+    - [4 cont. -- Sequence Data Types](atbswp4cont.md)
 5. Dictionaries and Structuring Data
-
 6. Manipulating strings
 
 ---

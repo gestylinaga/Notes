@@ -448,6 +448,20 @@ Things to note about `sort()`:
 
 ### Reversing the Values in a List with the reverse() Method
 
+The `reverse()` method is used to quickly reverse the order of a list:
+```python
+spam = ['cat', 'dog', 'moose']
+spam.reverse()
+spam
+```
+this returns: `['moose', 'dog', 'cat']`
+
+> **Exceptions to Indentation Rules in Python**:
+>
+> Usually indentation is very important in python, but lists are a special exception. Python knows
+> a list is not finished until it sees the `]` ending bracket 
+
+[Continued in Chapter 4: Lists - part 2](atbswp4cont.md)
 
 ---
 [back to Automate the Boring Stuff with Python main page](atbswp.md)
