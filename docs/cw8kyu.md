@@ -1,6 +1,6 @@
 # 8 kyu Difficulty
 
-## Multiply
+## 1. Multiply
 
 This code does not execute properly. Try to figure out why.
 
@@ -10,7 +10,8 @@ def multiply(a, b):
     return a * b # added return statement
 ```
 
-## Even or Odd
+
+## 2. Even or Odd
 
 Create a function (or write a script in Shell) that takes an integer as an argument and returns 
 "Even" for even numbers or "Odd" for odd numbers.
@@ -43,7 +44,7 @@ def even_or_odd(number):
 ```
 
 
-## Opposite Number
+## 3. Opposite Number
 
 Very simple, given a number, find its opposite.
 
@@ -71,7 +72,7 @@ def opposite(number):
 ```
 
 
-## Reversed Strings
+## 4. Reversed Strings
 
 Description:
 
@@ -111,7 +112,7 @@ def solution(string):
 ```
 
 
-## Convert boolean values to strings 'Yes' or 'No'.
+## 5. Convert boolean values to strings 'Yes' or 'No'.
 
  Complete the method that takes a boolean value and return a `"Yes"` strings for `true`, or a `"No"`
  string for `false`.
@@ -142,7 +143,7 @@ def bool_to_word(bool):
  ```
 
 
-## String Repeat
+## 6. String Repeat
 
 Write a function called `repeatStr` which repeats the given string `string` exactly `n` times.
 
@@ -175,7 +176,7 @@ def repeat_str(repeat, string):
 ```
 
 
-## Return Negative
+## 7. Return Negative
 
 In this simple assignment you are given a number and have to make it negative. But maybe the 
 number is already negative?
@@ -217,7 +218,7 @@ def make_negative(n):
 ```
 
 
-## Convert a Number to a String!
+## 8. Convert a Number to a String!
 
 We need a function that can transform a number into a string. 
 What ways of achieving this do you know?
@@ -251,7 +252,7 @@ def number_to_string(num):
 ```
 
 
-## Remove First and Last Character
+## 9. Remove First and Last Character
 
 Description:
 
