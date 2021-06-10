@@ -2,8 +2,12 @@
 
 ## Books:
 
-* [Automate the Boring Stuff with Python](atbswp.md) -- by Al Sweigart
+* [Automate the Boring Stuff with Python by Al Sweigart](atbswp.md) 
+-- Book Notes
+
 
 ## Websites:
     
 * [TryHackMe](thm.md) -- Room Writeups
+
+* [CodeWars](codeWars.md) -- Solution Algorithms
