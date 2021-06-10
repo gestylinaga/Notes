@@ -2,7 +2,7 @@
 
 [8kyu Difficulty](cw8kyu.md) -- Level 1 algorithms
 
-[7kyu Difficulty](cw7khu.md) -- Level 2 algorithms
+[7kyu Difficulty](cw7kyu.md) -- Level 2 algorithms
 
 
 ---
