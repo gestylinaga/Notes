@@ -256,7 +256,146 @@ print(pprint.pformat(someDictionaryValue))
 
 ## Using Data Structures to Model Real-World Things
 
+Dictionaries can be used to visualize something like a chess board:
+* 1-8 vertically top to bottom
+* a-z horizontally left to right
+* w/b Rook, Knight, Bishop, King, Queen, and Pawns
+```python
+# Starting Chess Positions
+chessBoard = {'1a': 'bRook', '2a': 'bKnight', '3a': 'bBishop', '4a': 'bKing', '5a': 'bQueen', '6a': 'bBishop', '7a': 'bKnight', '8a': 'bRook',
+    '1b': 'bPawn', '2b': 'bPawn', '3b': 'bPawn', '4b': 'bPawn', '5b': 'bPawn', '6b': 'bPawn', '7b': 'bPawn', '8b': 'bPawn',
+    '1c': ' ', '2c': ' ', '3c': ' ', '4c': ' ', '5c': ' ', '6c': ' ', '7c': ' ', '8c': ' ',
+    '1d': ' ', '2d': ' ', '3d': ' ', '4d': ' ', '5d': ' ', '6d': ' ', '7d': ' ', '8d': ' ',
+    '1e': ' ', '2e': ' ', '3e': ' ', '4e': ' ', '5e': ' ', '6e': ' ', '7e': ' ', '8e': ' ',
+    '1f': ' ', '2f': ' ', '3f': ' ', '4f': ' ', '5f': ' ', '6f': ' ', '7f': ' ', '8f': ' ',
+    '1g': 'wPawn', '2g': 'wPawn', '3g': 'wPawn', '4g': 'wPawn', '5g': 'wPawn', '6g': 'wPawn', '7g': 'wPawn', '8g': 'wPawn',
+    '1h': 'wRook', '2h': 'wKnight', '3h': 'wBishop', '4h': 'wKing', '5h': 'wQueen', '6h': 'wBishop', '7h': 'wKnight', '8h': 'wRook'}
+```
+
 ### A Tic-Tac-Toe Board
+
+the same can be done with a simpler game tic-tac-toe
+
+Sample Program *ticTacToe.py*:
+```python
+# a Simplified Tic-Tac-Toe Game Program
+# no win-condition, program exits when board is full (9 turns)
+
+# Board as a dictionary: (blank)
+theBoard = {'topL': ' ', 'topM': ' ', 'topR': ' ',
+        'midL': ' ', 'midM': ' ', 'midR': ' ',
+        'botL': ' ', 'botM': ' ', 'botR': ' '}
+
+# Prints a visual 'Game Board' on screen:
+def printBoard(board):
+    print(board['topL'] + '|' + board['topM'] + '|' + board['topR'])
+    print('-+-+-')
+    print(board['midL'] + '|' + board['midM'] + '|' + board['midR'])
+    print('-+-+-')
+    print(board['botL'] + '|' + board['botM'] + '|' + board['botR'])
+
+# User input game:
+turn = 'X'                                               # initial turn
+
+for i in range(9):                                       # runs a set number of times (9)
+    printBoard(theBoard)                                 # prints current board status
+    print('Turn for ' + turn + '. Move on which space?') # User Prompt
+    print('Options: top, mid, bot + L,M,R (example: topR, midM, botL)') # Show Options
+    move = input()                                       # saves input as `move`
+    theBoard[move] = turn                                # overwrites chosen move with 'X' or 'O'
+    if turn == 'X':                                      # after 'X' goes,
+        turn = 'O'                                       # turn changes to 'O'
+    else:                                                # if 'X' did not go,
+        turn = 'X'                                       # turn changes to 'X'
+
+printBoard(theBoard)
+```
+
+### Nested Dictionaries and Lists
+
+Remember:
+* lists contain an ordered series of values
+* dictionaries contain are useful for associating keys with values
+
+Sample Program *totalBrought.py*:
+```python
+# a dictionary that stores picnic guests and items they brought
+# displays total number of selected items
+
+# Dictionary holding picnic guests and items they brought:
+allGuests = {'Alice': {'apples': 5, 'pretzels': 12},
+        'Bob': {'ham sandwhiches': 3, 'apples': 2},
+        'Carol': {'cups': 3, 'apple pies': 1}}
+
+# Calculates total number of items brought:
+def totalBrought(guests, item):      # inputs name of guest, and name of item brought
+    numBrought = 0                   # default number of item brought
+    for k, v in guests.items():      # k = guest name; v = picnic item brought
+        numBrought += v.get(item, 0) # if item exists (as a key), add to total; else `0`
+    return numBrought                # returns final number of items brought
+
+# Proof of Concept Printout:
+print('Number of things being brought:')
+
+# Syntax: functionName(dictName, 'stringToSearch')
+print('Apples: ' + str(totalBrought(allGuests, 'apples')))
+print('Cups: ' + str(totalBrought(allGuests, 'cups')))
+print('Cakes: ' + str(totalBrought(allGuests, 'cakes')))
+print('Ham Sandwhiches: ' + str(totalBrought(allGuests, 'ham sandwhiches')))
+print('Apple Pies: ' + str(totalBrought(allGuests, 'apple pies')))
+```
+this returns:
+```
+Number of things being brought:
+Apples: 7
+Cups: 3
+Cakes: 0
+Ham Sandwhiches: 3
+Apple Pies: 1
+```
+
+
+## Summary
+
+* **Lists** and **Dictionaries** are values that can contain multiple values, including other lists
+and dictionaries
+* Dictionaries can map an item, or the **Key**, to another, the **Value**
+* Dictionaries are accessed using square brackets `[]`, just like lists
+* Instead of an integer index, dictionaries have **Keys**, which can be made up of:
+    - integers
+    - floats
+    - strings
+    - tuples
+
+
+## Practice Questions
+1. What does the code for an empty dictionary look like?
+    - `emptyDict = {}`
+2. What does a dictionary value with a key 'foo' and a value 42 look like?
+    - `{'foo': 42}`
+3. What is the main difference between a dictionary and a list?
+    - `lists are ordered (index), dictionaries are not`
+    - `dictionaries store key pair values, lists just store values`
+4. What happens if you try to access spam['foo'] if spam is {'bar': 100}?
+    - `KeyError: 'foo'`
+5. If a dictionary is stored in spam, what is the difference between the expressions 'cat' in 
+spam and 'cat' in spam.keys()?
+    - `"'cat' in spam" means the value 'cat'`
+    - `"'cat' in spam.keys()" means the key 'cat'`
+6. If a dictionary is stored in spam, what is the difference between the expressions 'cat' in 
+spam and 'cat' in spam.values()?
+    - `they are equivalent statements`
+7. What is a shortcut for the following code?
+```python
+if 'color' not in spam:
+    spam['color'] = 'black'
+```
+```python
+# Answer in One Line:
+spam.setdefault('color', 'black')
+```
+8. What module and function can be used to “pretty print” dictionary values?
+    - `pprint.pprint() and pprint.format()`
 
 
 ---
