@@ -11,7 +11,8 @@ Chapters:
 4. [Lists](atbswp4.md)
     - [4 cont. -- Sequence Data Types](atbswp4cont.md)
 5. [Dictionaries and Structuring Data](atbswp5.md)
-6. Manipulating strings
+6. [Manipulating strings](atbswp6.md)
+
 
 ---
 ## Links
