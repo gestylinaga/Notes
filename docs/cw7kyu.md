@@ -115,7 +115,59 @@ My Solution:
 ```
 
 
-## 4.
+## 4. Exes and Ohs
+
+Description:
+
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean 
+and be case insensitive. The string can contain any char.
+
+Examples:
+```
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false
+```
+
+My Solution:
+```python
+def xo(s):
+    # Initial Counter (equal even if none are present)
+    xCount = 0
+    oCount = 0
+    
+    # Main Program Loop
+    for c in s:                          # for each character in string
+        if (c == 'x') or (c == 'X'):     # x's added to xCount
+            xCount += 1
+        elif (c == 'o') or (c == 'O'):   # o's added to oCount
+            oCount += 1
+            
+    if xCount == oCount:                 # if counts are equal
+        return True
+    
+    else:                                # if counts are not equal
+        return False
+```
+
+Other Possible Solutions:
+```python
+def xo(s):
+    s = s.lower()
+    return s.count('x') == s.count('o')
+```
+```python
+def xo(s):
+    return True if s.lower().count('x') == s.lower().count('o') else False
+```
+```python
+def xo(s):
+    return s.lower().count('x') == s.lower().count('o')
+```
+
+
 ## 5.
 ## 6.
 ## 7.
