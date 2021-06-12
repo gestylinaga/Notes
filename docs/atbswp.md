@@ -10,7 +10,7 @@ Chapters:
 3. [Functions](atbswp3.md)
 4. [Lists](atbswp4.md)
     - [4 cont. -- Sequence Data Types](atbswp4cont.md)
-5. Dictionaries and Structuring Data
+5. [Dictionaries and Structuring Data](atbswp5.md)
 6. Manipulating strings
 
 ---
