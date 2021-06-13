@@ -168,8 +168,94 @@ def xo(s):
 ```
 
 
-## 5.
-## 6.
+## 5. Beginner Series #3 Sum of Numbers
+
+Description:
+
+Given two integers `a` and `b`, which can be positive or negative, find the sum of all the integers 
+between and including them and return it. If the two numbers are equal return `a` or `b`.
+
+Note: `a` and `b` are not ordered!
+
+Examples:
+```
+get_sum(1, 0) == 1   // 1 + 0 = 1
+get_sum(1, 2) == 3   // 1 + 2 = 3
+get_sum(0, 1) == 1   // 0 + 1 = 1
+get_sum(1, 1) == 1   // 1 Since both are same
+get_sum(-1, 0) == -1 // -1 + 0 = -1
+get_sum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2
+```
+
+My Solution:
+```python
+def get_sum(a,b):
+    sum = 0                        # initial sum
+     
+    if a == b:                     # if values are equal
+        sum = a                    # sum is either vaue
+         
+    # if values are NOT equal: 
+    elif a < b: 
+        for i in range(a, b + 1):  # iterates over each integer including last value
+            sum += i               # adds integer to sum
+    elif b < a: 
+        for i in range (b, a + 1): # iterates over each integer including last value
+            sum += i               # adds integer to sum
+            
+    return sum                     # returns final sum total
+```
+
+Other Possible Solutions:
+```python
+def get_sum(a,b):
+    return sum(range(min(a, b), max(a, b) + 1))
+```
+```python
+def get_sum(a,b):
+    if a>b : a,b = b,a
+    return sum(range(a,b+1))
+```
+```python
+def get_sum(a,b):
+    return sum([x for x in range(min(a,b),max(a,b)+1)])
+```
+
+
+## 6. Sum of Two Lowest Positive Integers
+
+Description:
+
+Create a function that returns the sum of the two lowest positive numbers given an array of 
+minimum 4 positive integers. No floats or non-positive integers will be passed.
+
+For example, when an array is passed like `[19, 5, 42, 2, 77]`, the output should be `7`.
+
+`[10, 343445353, 3453445, 3453545353453]` should return `3453455`.
+
+My Solution:
+```python
+def sum_two_smallest_numbers(numbers):
+    numbers.sort()                           # sorts lists, smallest to greatest
+    return int(numbers[0]) + int(numbers[1]) # returns sum of lowest 2 values
+```
+
+Other Possible Solutions:
+```python
+def sum_two_smallest_numbers(numbers):
+    return sum(sorted(numbers)[:2])
+```
+```python
+def sum_two_smallest_numbers(numbers):
+   numbers.sort()
+   return numbers[0] + numbers[1]
+```
+```python
+def sum_two_smallest_numbers(numbers):
+    return sorted(numbers)[0] + sorted(numbers)[1]
+```
+
+
 ## 7.
 ## 8.
 ## 9.
