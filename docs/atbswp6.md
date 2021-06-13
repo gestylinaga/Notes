@@ -574,40 +574,52 @@ pyperclip.paste()
 
 ## Summary
 
+* Text is a common form of data, and Python comes with **string methods** to process the text 
+stored in string values
+    - ie: indexing, and slicing
+* Learned so far: (Very Basic, No GUIs)
+    - displaying text with `print()`
+    - letting the user enter text with `input()`
+
 
 ## Practice Questions
 1. What are escape characters?
-
+    - `this character: '\', lets you use otherwise impossible symbols in strings`
 2. What do the \n and \t escape characters represent?
-
+    - `'\n' is newline, and '\t' is tab`
 3. How can you put a \ backslash character in a string?
-
+    - `by using 2 backslashes: '\\'`
 4. The string value "Howl's Moving Castle" is a valid string. Why isn’t it a problem that the 
 single quote character in the word Howl's isn’t escaped?
-
+    - `because the string is enclosed in double quotes ""`
 5. If you don’t want to put \n in your string, how can you write a string with newlines in it?
-
+    - `with triple quotes """`
 6. What do the following expressions evaluate to?
-```
-'Hello, world!'[1]
-'Hello, world!'[0:5]
-'Hello, world!'[:5]
-'Hello, world!'[3:]
+```python
+'Hello, world!'[1] # returns: 'e'
+'Hello, world!'[0:5] # returns: 'Hello'
+'Hello, world!'[:5] # returns: 'Hello'
+'Hello, world!'[3:] # returns: 'lo, world!'
 ```
 7. What do the following expressions evaluate to?
-```
-'Hello'.upper()
-'Hello'.upper().isupper()
-'Hello'.upper().lower()
+```python
+'Hello'.upper() # returns: 'HELLO'
+'Hello'.upper().isupper() # returns: True
+'Hello'.upper().lower() # returns: 'hello'
 ```
 8. What do the following expressions evaluate to?
-```
+```python
 'Remember, remember, the fifth of November.'.split()
+# returns: ['Remember,', 'remember,', 'the', 'fifth', 'of', 'November.']
+
 '-'.join('There can be only one.'.split())
+# returns: 'There-can-be-only-one.'
 ```
 9. What string methods can you use to right-justify, left-justify, and center a string?
-
+    - `in order: rjust(), ljust(), and center()`
 10. How can you trim whitespace characters from the beginning or end of a string?
+    - `the strip() method`
+
 
 ---
 [back to Automate the Boring Stuff with Python](atbswp.md)
