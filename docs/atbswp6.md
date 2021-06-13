@@ -137,7 +137,7 @@ The `in` and `not in` operators work just like they do with lists:
 '' in 'spam'
 # returns: True
 
-'cats' no in 'cats and dogs'
+'cats' not in 'cats and dogs'
 # returns: False
 ```
 Note that these expressions test if the **exact** string, case-sensitive, is found within the 
@@ -213,41 +213,41 @@ letter, and **all** the letters are uppercase/lowercase:
 spam = 'Hello, world!'
 
 spam.islower()
-# returns False
+# returns: False
 
 spam.isupper()
-# returns False
+# returns: False
 
 'HELLO'.isupper()
-# returns True
+# returns: True
 
 'abc12345'.islower()
-# returns True
+# returns: True
 
 '12345'.islower()
-#returns False
+#returns: False
 
 '12345'.islower()
-# returns True
+# returns: True
 ```
 
 Since the `upper()` and `lower()` string methods return strings themselves, you can call them on
 themselves:
 ```python
 'Hello'.upper()
-# returns 'HELLO'
+# returns: 'HELLO'
 
 'Hello'.upper().lower()
-# returns 'hello'
+# returns: 'hello'
 
 'Hello'.upper().lower().upper()
-# returns 'HELLO'
+# returns: 'HELLO'
 
 'HELLO'.lower()
-# returns 'hello'
+# returns: 'hello'
 
 'HELLO'.lower().islower()
-# returns True
+# returns: True
 ```
 
 ### The isX() Methods
@@ -329,19 +329,19 @@ The `startswith()` and `endswith()` methods return `True` if the string value th
 begins/ends with the string passed to the method:
 ```python
 'Hello, world!'.startswith('Hello')
-# returns True
+# returns: True
 
 'Hello, world!'.endswith('world!')
-# returns True
+# returns: True
 
 'abc123'.startswith('abcdef')
-# returns False
+# returns: False
 
 'Hello, world!'.startswith('Hello, World!')
-# returns True
+# returns: True
 
 'Hello, world!'.endswith('Hello, World!')
-# returns True
+# returns: True
 ```
 these are useful alternatives to the `==` equals operator if you need to check only whether the 
 first or last part of a string, instead of the whole thing, is equal to another string
@@ -360,9 +360,9 @@ string value:
 'ABC'.join(['My', 'name', 'is', 'Simon'])
 # returns: 'MyABCnameABCisABCSimon'
 ```
-Notice that the `join()` method is called on a **string value**, and passed a **list value**
+Notice that the `join()` method is calls/returns a **string value**, and passed a **list value**
 
-The opposite is the `split()` method: (called on a **list**, passed a **string**)
+The opposite is the `split()` method: (calls/returns a **list**, passed a **string**)
 ```python
 'My name is Simon'.split()
 # returns: ['My', 'name', 'is', 'Simon']
@@ -405,7 +405,7 @@ string:
 ```
 Notice how:
 * the return result is a **tuple** value
-* returns 3 substrings: 'before', 'separator', and 'after'
+* returns 3 substrings: the 'before', 'separator', and 'after'
 
 If a *separator* string occurs multiple times, the method only splits the string on the first
 occurence:
@@ -413,7 +413,8 @@ occurence:
 'Hello, world!'.partition('o')
 # returns: ('Hell', 'o', ', world!')
 ```
-If a *separator* string is **not** found, the entire string, and the other 2 substrings empty:
+If a *separator* string is **not** found, the return is the entire string, and the other 2 
+substrings empty:
 ```python
 'Hello, world!'.partition('XYZ')
 # returns: ('Hello, world!', '', '')
@@ -450,7 +451,7 @@ Notice how:
 # returns: 'Hello---------------'
 ```
 The `center()` string method works just like `ljust()` and `rjust()`, but centers the text rather
-than justifyi it to the left/right:
+than justify it on the left/right:
 ```python
 'Hello'.center(20)
 # returns: '       Hello        '
@@ -520,7 +521,7 @@ Notice how the order of the string passed,`'ampS'`, does **not** matter, only th
 ## Numeric Values of Characters with the ord() and chr() Functions
 
 Computers store information as bytes (strings of binary numbers), which means we need to be able to 
-convert text to numbers. Because of this, every text character has a corresponding numberic value
+convert text to numbers. Because of this, every text character has a corresponding numeric value
 called a **Unicode Code Point**.
 
 The `ord()` function is used to get the code point of a one-character string, and the `chr()` 
@@ -566,7 +567,11 @@ from your computer's clipboard
 **Note that pyperclip is NOT in Python's standard library, and must be installed differently**
 ```python
 import pyperclip
+# installed using pip
+
 pyperclip.copy('Hello, world!')
+# adds 'Hello, world!' to system clipboard
+
 pyperclip.paste()
 # returns: 'Hello, world!'
 ```
@@ -593,19 +598,19 @@ stored in string values
 single quote character in the word Howl's isn’t escaped?
     - `because the string is enclosed in double quotes ""`
 5. If you don’t want to put \n in your string, how can you write a string with newlines in it?
-    - `with triple quotes """`
+    - `multiline comment using triple quotes """`
 6. What do the following expressions evaluate to?
 ```python
-'Hello, world!'[1] # returns: 'e'
+'Hello, world!'[1]   # returns: 'e'
 'Hello, world!'[0:5] # returns: 'Hello'
-'Hello, world!'[:5] # returns: 'Hello'
-'Hello, world!'[3:] # returns: 'lo, world!'
+'Hello, world!'[:5]  # returns: 'Hello'
+'Hello, world!'[3:]  # returns: 'lo, world!'
 ```
 7. What do the following expressions evaluate to?
 ```python
-'Hello'.upper() # returns: 'HELLO'
+'Hello'.upper()           # returns: 'HELLO'
 'Hello'.upper().isupper() # returns: True
-'Hello'.upper().lower() # returns: 'hello'
+'Hello'.upper().lower()   # returns: 'hello'
 ```
 8. What do the following expressions evaluate to?
 ```python
@@ -618,7 +623,7 @@ single quote character in the word Howl's isn’t escaped?
 9. What string methods can you use to right-justify, left-justify, and center a string?
     - `in order: rjust(), ljust(), and center()`
 10. How can you trim whitespace characters from the beginning or end of a string?
-    - `the strip() method`
+    - `the strip() method, with no parameter is set to trim whitespace by default`
 
 
 ---
