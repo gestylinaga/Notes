@@ -12,6 +12,16 @@ Chapters:
     - [4 cont. -- Sequence Data Types](atbswp4cont.md)
 5. [Dictionaries and Structuring Data](atbswp5.md)
 6. [Manipulating strings](atbswp6.md)
+7. [Pattern Matching with Regular Expressions](atbswp7.md)
+8. Input Validation
+9. Reading and Writing Files
+10. Organizing Files
+11. Debugging
+12. Web Scraping
+13. Working with Excel Spreadsheets
+14. Working with Google Spreadsheets
+15. Working with PDF and Word Documents
+16. Working with CSV Files and JSON Data
 
 
 ---
