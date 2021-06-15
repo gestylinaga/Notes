@@ -13,7 +13,7 @@ Chapters:
 5. [Dictionaries and Structuring Data](atbswp5.md)
 6. [Manipulating strings](atbswp6.md)
 7. [Pattern Matching with Regular Expressions](atbswp7.md)
-8. Input Validation
+8. [Input Validation](atbswp8.md)
 9. Reading and Writing Files
 10. Organizing Files
 11. Debugging
