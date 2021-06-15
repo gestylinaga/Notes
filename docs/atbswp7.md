@@ -491,17 +491,100 @@ Basic Regular Expression Syntax:
 
 ## Case-Insensitive Matching
 
+Normally, regular expressions match text with the **exact** casing you specify:
+```python
+# all match completely different strings:
+regex1 = re.compile('RoboCop')
+regex2 = re.compile('ROBOCOP')
+regex3 = re.compile('robOcop')
+regex4 = re.compile('RobocOp')
+```
+But the use of `re.IGNORECASE` or `re.I` as a second argument to `re.compile()` can be used to make 
+your regex case-insensitive:
+```python
+robocop = re.compile(r'robocop', re.I)
+
+robocop.search('RoboCop is part man, part machine, all cop.').group()
+# this returns: 'RoboCop'
+
+robocop.search('ROBOCOP protects the innocent.').group()
+# this returns: 'ROBOCOP'
+
+robocop.search('Al, why does your programming book talk about robocop so much?').group()
+# this returns: 'robocop'
+```
+
 
 ## Substituting Strings with the sub() Method
+
+The `sub()` method is used to substitute new text in place of those patterns:
+```python
+namesRegex = re.compile(r'Agent \w+')
+
+nameRegex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.')
+# this returns: 'CENSORED gave the secret documents to CENSORED.'
+```
+Notice that the first argument, `'CENSORED'`, is the string to replace any matches, and the second 
+argument is the regular string for the expression
+
+You can also add `\1`, `\2`, `\3`, and so on, to mean "Enter the text of group 1, 2, 3, and so on 
+in the substitution":
+```python
+agentNamesRegex = re.compile(r'Agent (\w)\w*')
+agentNamesRegex.sub(r'\1****', 'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a \
+    double agent.')
+# this returns: 'A**** told C**** that E**** knew B**** was a double agent.'
+```
 
 
 ## Managing Complex Regexes
 
+The use of `re.VERBOSE` as a second argument to `re.compile()` tells the function to ignore 
+whitespace and comments inside the regular expression string:
+
+So instead of something hard to read like this:
+```python
+phoneRegex = re.compile(r'\d{3}|(\d{3}\))?\d{3}(\s|-|\.)\d{4}
+(\s*(ext|x|ext.)\s*\d{2,5})?)')
+```
+you can spread regex over multiple lines with comments like this:
+```python
+phoneRegex = re.compile(r'''(
+    (\d{3}|(\d{3}\))?            # area code
+    (\s|-|\.)?                   # separator
+    \d{3}                        # first 3 digits
+    (\s|-|\.)?                   # separator
+    \d{4}                        # last 4 digits
+    (\s*(ext|x|ext.)\s*\d{2,5})? # extension
+    )''', re.VERBOSE)
+```
+Notice the use of 3 quotes `'''` to make a multiline string, and hash symbol `#` for comments
+
 
 ## Combining re.IGNORECASE, re.DOTALL, and re.VERBOSE
 
+Usually, the `re.compile()` function takes only a single value as a second argument, but you can 
+get around this limitation by using the pipe `|` symbol, which in this context is known as the 
+*bitwise or* operator:
+```python
+# case-insensitive AND includes newlines to the dot `.` character
+someRegexValue = re.compile('foo', re.IGNORECASE | re.DOTALL)
+
+# all 3 options:
+someOtherRegexValue = re.compile('foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
+```
+
 
 ## Summary
+
+* Regular Expressions allow you to specify the pattern of characters you are looking for, rather 
+than the exact text itself
+* The `re` module that comes with Python lets you compile *Regex* objects
+    - `search()` to find a single match
+    - `findall()` to find all matching instances
+    - `sub()` to a do a find-and-replace substitution of text
+* [Official Python re Library Docs](https://docs.python.org/3/library/re.html)
+* [Regular-Expressions.info -- Regex Tutorial Site](https://www.regular-expressions.info/)
 
 
 ---
