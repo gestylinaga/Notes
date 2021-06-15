@@ -143,15 +143,153 @@ print(mainNumber) # returns: 555-4242
 
 ### Matching Multiple Groups with the Pipe
 
+The `|` pipe symbol is used to match *one of many* expressions:
+```python
+heroRegex = re.compile(r'Batman|Tina Fey')
+mo1 = heroRegex.search('Batman|Tina Fey')
+mo1.group()
+# this returns: 'Batman'
+
+mo2 = heroRegex.search('Tina Fey|Batman')
+mo2.group()
+# this returns: 'Tina Fey'
+```
+Notice that when *both* `'Batman'` and `'Tina Fey'` appear in the string, the first occurence of
+matching text is returned as the *Match* object
+
+The `|` is also used to match one of several patterns as part of your regex:
+```python
+batRegex = re.compile(r'Bat(man|mobile|copter|bat)')
+
+mo = batRegex.search('Batmobile lost a wheel')
+
+mo.group()
+# this returns: 'Batmobile'
+
+mo.group(1)
+# this returns: 'mobile'
+```
+Notice the use of `()` parenthesis after the prefix `'bat'` to specify the patterns to search
+
+Note that to match an actual pipe character, you have to escape it: `\|`
+
 ### Optional Matching with the Question Mark
+
+```python
+batRegex = re.compile(r'Bat(wo)?man')
+
+mo1 = batRegex.search('The Adventures of Batman')
+mo1.group()
+# this returns: 'Batman'
+
+mo2 = batRegex.search('The Adventures of Batwoman')
+mo2.group()
+# this returns: 'Batwoman'
+```
+Notice the use of the `?` question mark after the `(wo)`, indicating that the `wo` is optional
+
+This is why the regex `'Bat(wo)?man'`, matches both `'Batman'` **and** `'Batwoman'`
+
+Using the earlier phone number example: (with an *optional* area code)
+```python
+phoneRegex = re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
+
+mo1 = phoneRegex.search('My number is 415-555-4242')
+mo1.group()
+# this returns: '415-555-4242'
+
+mo2 = phoneRegex.search('My number is 555-4242')
+mo2.group()
+# this returns: '555-4242'
+```
+Notice how again, the regex pattern matches both instances because of the optional supplied
+
+Think of the `?` as saying: "Match zero *or* one of the group preceding this question mark"
+
+Note that to match an actual question mark, you have to escape it: `\?`
 
 ### Matching Zero or More with the Star
 
+Think of the `*` star/asterisk as "match zero or more' times:
+```python
+batRegex = re.compile(r'Bat(wo)*man')
+
+mo1 = batRegex.search('The Adventures of Batman')
+mo1.group()
+# this returns: 'Batman'
+
+mo2 = batRegex.search('The Adventures of Batwowowowoman')
+mo2.group()
+# this returns: 'Batwowowowoman'
+```
+Notice how the regex matches `'Batman'` in the first string (no instances of `wo`), **AND** 
+`'Batwowowowoman'` in the second string (4 instances of `wo`)
+
+To match an actual star/asterisk character, you have to escape it: `\*`
+
 ### Matching One or More with the Plus
+
+Think of the `+` plus as "match **one** or more":
+```python
+batRegex = re.compile(r'Bat(wo)+man')
+
+mo1 = batRegex.search('The Adventures of Batwoman')
+mo1.group()
+# this returns: 'Batwoman'
+
+mo2 = batRegex.search('The Adventures of Batwowowowoman')
+mo2.group()
+# this returns: 'Batwowowowoman'
+
+mo3 = batRegex.search('The Adventures of Batman')
+mo3 == None
+# this returns: True
+```
+Notice how the last string returns `None` because the `wo` in not found **at all**
+
+To match an actual plus character, you have to escape it: `\+`
 
 ### Matching Specific Repititions with Braces
 
+Braces `{}` are used to specify a group repeated a specific number of times:
+```python
+haRegex = re.compile(r'(Ha){3}')
+
+mo1 = haRegex.search('HaHaHa')
+mo1.group()
+# this returns: 'HaHaHa'
+
+mo2 = haRegex.search('Ha')
+mo2 == None
+# returns: True
+```
+Notice how the second string `'Ha'` returns `None` because the specified `(Ha)` only appears **once**
+
+Note that a range can also be passed to the braces : `{3,5}`, `{,6}`, or `{2,}`
+
 ## Greedy and Non-Greedy Matching
+
+Python's regular expressions are *greedy* by default, meaning in ambiguous situations with braces, 
+they will match the **longest** string possible
+
+The *non-greedy*, aka *lazy*, version of braces has a question mark following the closing brace `}?`:
+```python
+greedyHaRegex = re.compile(r'(Ha){3,5}')
+mo1 = greedyHaRegex.search('HaHaHaHaHa')
+mo1.group()
+# this returns: 'HaHaHaHaHa'
+
+nongreedyHaRegex = re.compile(r'(Ha){3.5}?')
+mo2 = nongreedyHaRegex.search('HaHaHaHaHa')
+mo2.group()
+# this returns: 'HaHaHa'
+```
+
+Note that question marks `?` can have 2 meanings in regular expressions:
+1. declaring a *non-greedy* match
+2. flagging an *optional group*
+
+These 2 meanings are completely **unrelated** and should **not** be confused
 
 
 ## The findall() Method
@@ -160,7 +298,7 @@ print(mainNumber) # returns: 555-4242
 ## Character Classes
 
 **Shorthand Codes for Common Character Classes**:
-| Shorthand character classes | Represents |
+| Shorthand Character Classes | Represents |
 | :---: | :--- |
 | `\d` | Any numeric digit from 0-9 |
 | `\D` | Any character that is **not** a digit from 0-9 |
