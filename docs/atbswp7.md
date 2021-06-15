@@ -294,6 +294,33 @@ These 2 meanings are completely **unrelated** and should **not** be confused
 
 ## The findall() Method
 
+The `findall()` method functions *similarly* to the `search()` method, except:
+* the `search()` method returns a *Match* object of the **first** matched text
+* the `findall()` method returns the strings of **every** match in the searched text
+```python
+# using search()
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('Cell: 415-555-9999 Work: 212-555-0000')
+mo.group()
+# this returns: '415-555-9999'
+
+# using findall()
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d') # notice the lack of groups
+phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+# this returns: ['415-555-9999', '212-555-0000']
+```
+Notice how `findall()` does **not** return a *Match* object, only if there are no groups in the 
+regular expression
+
+If there **are** groups in the regex, then `findall()` will return a **list of tuples**:
+```python
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)') # notice the groups '( )'
+phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
+# this returns: [('415', '555', '9999'), ('212', '555', '0000')]
+```
+In Summary, on `findall()`:
+* when called on a regex with **no groups**, the method returns a list of **strings**
+* when called on a regex that **has groups**, the method returns a list of **tuples**
 
 ## Character Classes
 
@@ -307,22 +334,174 @@ These 2 meanings are completely **unrelated** and should **not** be confused
 | `\s` | Any space, tab, or newline character |
 | `\S` | Any character that is **not** a space, tab, or newline |
 
+Example:
+```python
+xmasRegex = re.compile(r'\d+\s\w+')
+xmasRegex.findall('12 drummers, 11 pipers, 10 lords, 9 ladies, 8 maids, 7 swans, 6 geese, 5 rings \
+    4 birds, 3 hens, 2 doves, 1 partridge')
+
+# this returns:
+# ['12 drummers', '11 pipers', '10 lords', '9 ladies', '8 maids', '7 swans', '6 geese', '5 rings', 
+# '4 birds', '3 hens', '2 doves', '1 partridge']
+```
+
 
 ## Making Your Own Character Classes
+
+If the shorthand character classes are too broad, you can make your own character classes with 
+square brackets `[]`:
+```python
+vowelRegex = re.compile(r'[aeiouAEIOU]') # this matches any vowels, either case
+vowelRegex.findall('RoboCop eats baby food. BABY FOOD.')
+
+# this returns:
+# ['o', 'o', 'o', 'e', 'a', 'a', 'o', 'o', 'A', 'O', 'O']
+```
+You can also use a range of letters/numbers with a hyphen `-` like: `[a-zA-Z0-9]`
+
+Note that inside the brackets `[]`, you do **not** need to escape the `. * ? ( )` special characters
+
+The caret `^` character, used just after the character class's opening bracket, creates a **negative 
+character class**, which matches all the characters that are **not** in the character class:
+```python
+consonantRegex = re.compile(r'[^aeiouAEIOU]') # excludes all vowels, both cases
+consonantRegex.findall('RoboCop eats baby food. BABY FOOD.')
+
+# this returns:
+# ['R', 'b', 'C', 'p', ' ', 't', 's', ' ', 'b', 'b', 'y', ' ', 'f', 'd', '.', ' ', 'B', 'B', 'Y', 
+# ' ', 'F', 'D', '.']
+```
 
 
 ## The Caret and Dollar Sign Characters
 
+The caret `^` character, used at the **start** of a regex, indicates that a match **must** occur at 
+the **beginning** of the searched text
+```python
+beginsWithHello = re.compile(r'^Hello') # must begin with 'Hello'
+beginsWithHello.search('Hello, world!')
+
+# this returns:
+# <re.Match object; span=(0, 5), match='Hello'>
+
+beginsWithHello.search('He said hello.') == None
+# this returns: True
+```
+Likewise, the dollar sign `$` character, used at the **end** of the regex, indicates that a match 
+**must** occur at the **end** of the searched text:
+```python
+endsWithNumber = re.compile(r'\d$') # must end with a numeric character from 0-9
+endsWithNumber.search('Your number is 42')
+
+# this returns:
+# <re.Match object; span=(16, 17), match='2'>
+```
+If both the caret `^` **and** dollar symbol `$` are used, the **entire** string must match the regex:
+```python
+wholeStringIsNum = re.compile(r'^\d+$') # entire string must be 0-9 ONLY
+wholeStringIsNum.search('1234567890')
+
+# this returns:
+# <re.Match object; span=(0, 10), match='1234567890'>
+
+wholeStringIsNum.search('12345xyz67890') == None
+# this returns: True
+
+wholeStringIsNum.search('12 34567890') == None
+# this returns: True
+```
+The mnemonic "Carrots cost dollars" helps remind you of the order: caret `^`, then dollar `$`
+
 
 ## The Wildcard Character
 
+The dot `.` character, aka a *wildcard*, matches **any** character, except for a newline:
+```python
+atRegex = re.compile(r'.at')
+atRegex.findall('The cat in the hat sat on the flat mat.')
+# this returns:
+# ['cat', 'hat', 'sat', 'lat', 'mat']
+```
 
 ### Matching Everything with Dot-Star
 
+Combining the dot and star character `.*`, matches any single character except newline, any number 
+of times:
+```python
+nameRegex = re.compile(r'First Name: (.*) Last Name: (.*)')
+mo = nameRegex.search('First Name: Al Last Name: Sweigart')
+
+mo.group(1)
+# this returns: 'Al'
+
+mo.group(2)
+# this returns: 'Sweigart'
+```
+Note that this uses a *greedy* mode, and tries to match as much text as possible
+
+To match any/all text in a *non-greedy* way, use: dot, star, and question mark `.*?`:
+```python
+nongreedyRegex = re.compile(r'<.*?>')
+mo = nongreedyRegex.search('<To serve man> for dinner.>')
+mo.group()
+# this returns: '<To serve man>'
+
+greedyRegex = re.compile(r'<.*>')
+mo = nongreedyRegex.search('<To serve man> for dinner.>')
+mo.group()
+# this returns: '<To serve man> for dinner.>'
+```
+
 ### Matching Newlines with the Dot Character
+
+The `re.DOTALL` argument is passed second to `re.compile()`, and matches any character **including** 
+the newline character:
+```python
+noNewlineRegex = re.compile('.*')
+noNewlineRegex.search('Serve the public trust. \nProtect the innocent. \nUphold the law.').group()
+# this returns: 'Serve the public trust.'
+
+newlineRegex = re.compile('.*', re.DOTALL)
+newlineRegex.search('Serve the public trust. \nProtect the innocent. \nUphold the law.').group()
+# this returns: 'Serve the public trust. \nProtect the innocent. \nUphold the law.'
+```
 
 
 ## Review of Regex Symbols
+
+Basic Regular Expression Syntax:
+| Symbol | Matches |
+| --- | --- |
+| `?` | 0 or 1 of the preceding group |
+| `*` | 0 or more of the preceding group |
+| `+` | 1 or more of the preceding group |
+| `{n}` | exactly *n* of the preceding group |
+| `{n,}` | *n* or more of the preceding group |
+| `{,m}` | 0 to *m* of the preceding group |
+| `{n,m}` | at least *n*, at most *m* of preceding group |
+| `{n,m}?`, `*?`, or `+?` | *nongreedy* match of preceding group |
+| `^spam` | must begin with *spam* |
+| `spam$` | must end with *spam* |
+| `.` | any character except newline characters |
+| `\d`, `\w`, `\s` | any: digit, word, space |
+| `\D`, `\W`, `\S` | anything **except** a digit, word, or space |
+| `[abc]` | any character inside the brackets (*a*, *b*, or *c*)
+| `[^abc]` | any character **not** inside the brackets |
+
+
+## Case-Insensitive Matching
+
+
+## Substituting Strings with the sub() Method
+
+
+## Managing Complex Regexes
+
+
+## Combining re.IGNORECASE, re.DOTALL, and re.VERBOSE
+
+
+## Summary
 
 
 ---
