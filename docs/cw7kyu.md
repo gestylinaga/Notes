@@ -256,8 +256,93 @@ def sum_two_smallest_numbers(numbers):
 ```
 
 
-## 7.
-## 8.
+## 7. Mumbling
+
+This time no story, no theory. The examples below show you how to write function `accum`:
+
+Examples:
+```
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+```
+The parameter of accum is a string which includes only letters from `a..z` and `A..Z`.
+
+My Solution:
+```python
+def accum(s):
+    newString = ''                                       # empty string for default
+    counter = 0                                          # counter at 0 for default
+    for c in s:                                          # for each character in the string
+        newString += c.upper() + ((c.lower()) * counter) # upper case character, lowercase case characters (times index)
+        counter += 1                                     # adds 1 to index counter
+        if counter < len(s):                             # for every letter, except the last
+            newString += '-'                             # adds a '-' character
+    return newString                                     # final product
+```
+
+Other Possible Solutions:
+```python
+def accum(s):
+    return "-".join([((j*(i+1)).capitalize()) for i,j in enumerate(s)])
+```
+```python
+def accum(s):
+    output = ""
+    for i in range(len(s)):
+        output+=(s[i]*(i+1))+"-"
+    return output.title()[:-1]
+```
+```python
+def accum(s):
+    return '-'.join(c.upper() + c.lower() * i for i, c in enumerate(s))
+```
+
+
+## 8. List Filtering
+
+Description:
+
+In this kata you will create a function that takes a list of non-negative integers and strings and 
+returns a new list with the strings filtered out.
+
+Example:
+```python
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+```
+
+My Solution:
+```python
+def filter_list(l):
+    newList = []                # empty list for default
+    for i in l:                 # for each item in list
+        if i in range(0, 9999): # if item is in range 0-9999
+            newList += [i]      # add to newlist
+    return newList              # final list
+```
+Other Possible Solutions:
+```python
+def filter_list(l):
+    new_list =[]
+    for x in l:
+        if type(x) != str:
+            new_list.append(x)
+    return new_list
+```
+```python
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [e for e in l if isinstance(e, int)]
+```
+```python
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [i for i in l if not isinstance(i, str)]
+```
+
+
 ## 9.
 ## 10.
 
