@@ -14,7 +14,7 @@ Chapters:
 6. [Manipulating strings](atbswp6.md)
 7. [Pattern Matching with Regular Expressions](atbswp7.md)
 8. [Input Validation](atbswp8.md)
-9. Reading and Writing Files
+9. [Reading and Writing Files](atbswp9.md)
 10. Organizing Files
 11. Debugging
 12. Web Scraping
