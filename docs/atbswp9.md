@@ -125,7 +125,7 @@ Any filenames or paths that do **not** begin with the root folder are assumed to
 You can get the current working directory as a string value with the `Path.cwd()` function, and 
 changing it using `os.chdir()`:
 ```python
-from pathlib impot Path
+from pathlib import Path
 import os
 Path.cwd()
 # on Windows this returns:
@@ -158,9 +158,198 @@ Depending on the OS:
 
 ### Absolute vs. Relative Paths
 
+Two ways to specify a file path:
+1. an *absolute path*, which always begins with the root folder
+2. a *relative path*, which is relative to the program's current working directory
+
+aka the *dot* `.` and *dot-dot* `..` folders, special names that can be used in a path
+* dot `.` shorthand for "this directory"
+* dot-dot `..` shorthand for "the parent folder"
+
+ie: `.\spam.txt` and `spam.txt` refer to the same file
+
 ### Creating New Folders Using the os.makedirs() Function
 
+Your programs can create new directories with the `os.makedirs()` function:
+```python
+import os
+os.makedirs('C:\\delicious\\walnut\\waffles')
+```
+this creates the folder `waffles`, **and** any necessary intermediate folders to ensure that the 
+full path exists (`delicious`, and `walnut` beforehand)
+
+You can also make a directory from a *Path* object by calling the `mkdir()` method:
+```python
+from pathlib import Path
+Path(r'C:\Users\Al\spam').mkdir()
+# makes a folder named spam
+```
+Note that `mkdir()` can only make **one** folder at a time, and won't make subdirectories like 
+`os.mkdirs()` can
+
 ### Handling Absolute and Relative Paths
+
+The `pathlib` module provides the `is_absolute()` method, which when used on a *Path* object, 
+returns `True` if it represents an absolute path, and `False` for relative paths:
+```python
+Path.cwd()
+# on Windows this returns: WindowsPath('C:/Users/gestylinaga/GitHub/Notes/docs')
+
+Path.cwd().is_absolute()
+# this returns: True
+
+Path('spam/bacon/eggs').is_absolute()
+# this returns: False
+```
+To get an absoute path *from* a relative path, you can put `Path.cwd() /` in front of the relative 
+*Path* object:
+```python
+Path('my/relative/path')
+# on Windows this returns: WindowsPath('my/relative/path')
+
+Path.cwd() / Path('my/relative/path')
+# on Windows this returns:
+# WindowsPath('C:/Users/gestylinaga/GitHub/Notes/docs/my/relative/path')
+```
+or using the home directory instead:
+```python
+Path.home() / Path('my/relative/path') # notice the .home() insead of .cwd()
+# on Windows this return:
+# WindowsPath('C:/Users/gesteratops/my/relative/path')
+```
+The `os.path` module also has:
+* `os.path.abspath(path)` will return a string of the absolute path of the argument, an *easy* way 
+of converting a relative path into an absolute one
+* `os.path.isabs(path)` will return `True` if the argument is an absolute path, and `False` if it 
+is a relative path
+* `os.path.relpath(path, start)` will return a string of a relative path from the *start* path to 
+*path*. If *start* is not provided, the current working directory is used as the start path
+
+`os.path` examples:
+```python
+os.path.abspath('.')
+# on Windows this returns:
+# 'C:\\Users\\gestylinaga\\Github\\Notes\\docs'
+
+os.path.abspath('.\\Scripts')
+# on Windows this returns:
+# 'C:\\Users\\gestylinaga\\GitHub\\Notes\\docs\\Scripts'
+
+os.path.isabs('.')
+# this returns: False
+
+os.path.isabs(os.path.abspath('.'))
+# this returns: True
+```
+
+### Getting the Parts of a File Path
+
+The attributes of a file path:
+```
+# Windows:
+C:\Users\gestylinaga\spam.txt
+```
+* `C:\` Anchor, or root folder of the filesystem
+    - `C:` Drive, a physical hard drive, or other storage device
+* `\Users\gestylinaga\` Parent, folder containing the file
+* `spam.txt` Name
+    - `spam` Stem, or *base name*
+    - `.txt` Suffix, or *extension*
+```
+# Linux/macOS:
+/home/gestylinaga/spam.txt
+```
+* `/` Anchor, or root folder of the filesystem
+* `home/gestylinaga/` Parent, folder containing the file
+* `spam.txt` Name
+    - `spam` Stem, or *base name*
+    - `.txt` Suffix, or *extension*
+
+Note that Windows *Path* objects have a *drive* attribute, but macOS and Linux *Path* objects do 
+**not**. Also note that the *drive* attribute doesn't include the first backslash `\`
+
+To extract each attribute from the file path:
+```python
+p = Path('C:/Users/gestylinaga/spam.txt')
+
+p.anchor
+# this returns: 'C:\\'
+
+p.parent # this is a path object, not a string
+# this returns: WindowsPath('C:/Users/gestylinaga')
+
+p.name
+# this returns: 'spam.txt'
+
+p.stem
+# this returns: 'spam'
+
+p.suffix
+# this returns: '.txt'
+
+p.drive
+# this returns: 'C:'
+```
+The *parents* attribute (different from the *parent* attribute) evaluates to the ancestor folders 
+of a *Path* object with an integer index:
+```python
+Path.cwd()
+# returns:WindowsPath('C:/Users/gestylingaga/GitHub/Notes/docs')
+
+Path.cwd().parents[0]
+# returns: WindowsPath('C:/Users/gestylinaga/GitHub/Notes')
+
+Path.cwd().parents[1]
+# returns: WindowsPath('C:/Users/gestylinaga/GitHub')
+
+Path.cwd().parents[2]
+# returns: WindowsPath('C:/Users/gestylinaga')
+
+Path.cwd().parents[3]
+# returns: WindowsPath('C:/Users')
+
+Path.cwd().parents[4]
+# returns: WindowsPath('C:/')
+```
+
+### Finding File Sizes and Folder Contents
+
+### Modifying a List of Files Using Glob Patterns
+
+### Checking Path Validity
+
+
+## The File Reading/Writing Process
+
+### Opening Files with the open() Function
+
+### Reading the Contents of Files
+
+### Writing to Files
+
+
+## Saving Variables with the Shelve Module
+
+
+## Saving Variables with the pprint.pformat() Function
+
+
+## Summary
+
+
+## Practice Questions
+
+1. What is a relative path relative to?
+2. What does an absolute path start with?
+3. What does `Path('C:/Users') / 'Al'` evaluate to on Windows?
+4. What does `'C:/Users' / 'Al'` evaluate to on Windows?
+5. What do the `os.getcwd()` and `os.chdir()` functions do?
+6. What are the `.` and `..` folders?
+7. In `C:\bacon\eggs\spam.txt`, which part is the dir name, and which part is the base name?
+8. What are the three “mode” arguments that can be passed to the `open()` function?
+9. What happens if an existing file is opened in write mode?
+10. What is the difference between the `read()` and `readlines()` methods?
+11. What data structure does a shelf value resemble?
 
 
 ---
