@@ -15,7 +15,7 @@ For example: the filename `project.docx` in the path `C:\Users\Al\Documents`:
 Additional drives, like a DVD drives or USB flash drives, are known as *volumes*:
 * on Windows: appear as new, lettered root drives (such as `D:\` or `E:\`)
 * on macOS: appear as new folders under the `/Volumes` folder
-* on Linux: appear as new folders under the `/mnt` or 'mount' folder
+* on Linux: appear as new folders under the `/mnt` or "mount" folder
     - note that file/folder names are case-sensitive in Linux
 
 ### Backslash on Windows and Forward Slash on macOS and Linux
@@ -127,6 +127,7 @@ changing it using `os.chdir()`:
 ```python
 from pathlib import Path
 import os
+
 Path.cwd()
 # on Windows this returns:
 # WindowsPath('C:/Users/gestylinaga/GitHub/Notes/docs')
@@ -159,12 +160,12 @@ Depending on the OS:
 ### Absolute vs. Relative Paths
 
 Two ways to specify a file path:
-1. an *absolute path*, which always begins with the root folder
+1. an *absolute path*, which **always** begins with the root folder
 2. a *relative path*, which is relative to the program's current working directory
 
-aka the *dot* `.` and *dot-dot* `..` folders, special names that can be used in a path
-* dot `.` shorthand for "this directory"
-* dot-dot `..` shorthand for "the parent folder"
+The *dot* `.` and *dot-dot* `..` folders, special names that can be used in a path
+* dot `.` shorthand for "*this directory*"
+* dot-dot `..` shorthand for "*the parent folder*"
 
 ie: `.\spam.txt` and `spam.txt` refer to the same file
 
@@ -201,7 +202,7 @@ Path.cwd().is_absolute()
 Path('spam/bacon/eggs').is_absolute()
 # this returns: False
 ```
-To get an absoute path *from* a relative path, you can put `Path.cwd() /` in front of the relative 
+To get an absoute path *from* a relative path, you can put `Path.cwd()` and `/` in front of the relative 
 *Path* object:
 ```python
 Path('my/relative/path')
@@ -235,7 +236,7 @@ os.path.abspath('.\\Scripts')
 # on Windows this returns:
 # 'C:\\Users\\gestylinaga\\GitHub\\Notes\\docs\\Scripts'
 
-os.path.isabs('.')
+os.path.isabs('.') # shorthand for "this directory"
 # this returns: False
 
 os.path.isabs(os.path.abspath('.'))
@@ -249,21 +250,21 @@ The attributes of a file path:
 # Windows:
 C:\Users\gestylinaga\spam.txt
 ```
-* `C:\` Anchor, or root folder of the filesystem
-    - `C:` Drive, a physical hard drive, or other storage device
-* `\Users\gestylinaga\` Parent, folder containing the file
-* `spam.txt` Name
-    - `spam` Stem, or *base name*
-    - `.txt` Suffix, or *extension*
+* `C:\` **Anchor**, or root folder of the filesystem
+    - `C:` **Drive**, a physical hard drive, or other storage device
+* `\Users\gestylinaga\` **Parent**, folder containing the file
+* `spam.txt` **Name**
+    - `spam` **Stem**, or *base name*
+    - `.txt` **Suffix**, or *extension*
 ```
 # Linux/macOS:
 /home/gestylinaga/spam.txt
 ```
-* `/` Anchor, or root folder of the filesystem
-* `home/gestylinaga/` Parent, folder containing the file
-* `spam.txt` Name
-    - `spam` Stem, or *base name*
-    - `.txt` Suffix, or *extension*
+* `/` **Anchor**, or root folder of the filesystem
+* `home/gestylinaga/` **Parent**, folder containing the file
+* `spam.txt` **Name**
+    - `spam` **Stem**, or *base name*
+    - `.txt` **Suffix**, or *extension*
 
 Note that Windows *Path* objects have a *drive* attribute, but macOS and Linux *Path* objects do 
 **not**. Also note that the *drive* attribute doesn't include the first backslash `\`
@@ -340,11 +341,15 @@ Path.cwd().parents[4]
 ## Practice Questions
 
 1. What is a relative path relative to?
+    - `relative to the current working directory`
 2. What does an absolute path start with?
+    - `always starts with the root folder`
 3. What does `Path('C:/Users') / 'Al'` evaluate to on Windows?
 4. What does `'C:/Users' / 'Al'` evaluate to on Windows?
 5. What do the `os.getcwd()` and `os.chdir()` functions do?
 6. What are the `.` and `..` folders?
+    -   `'.' is 'this directory'`
+    - `'..' is 'parent directory'`
 7. In `C:\bacon\eggs\spam.txt`, which part is the dir name, and which part is the base name?
 8. What are the three “mode” arguments that can be passed to the `open()` function?
 9. What happens if an existing file is opened in write mode?
