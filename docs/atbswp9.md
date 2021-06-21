@@ -313,14 +313,177 @@ Path.cwd().parents[4]
 # returns: WindowsPath('C:/')
 ```
 
+The older `os.path` module has similar functions for getting the different parts of a path:
+```
+C:\Windows\System32\calc.exe
+```
+* `C:\Windows\System32` is the *Dir name*
+* `calc.exe` is the *Base name*
+
+Calling `os.path.dirname(path)` will return a string of everything that comes **before** the last 
+slash in the *path* argument
+
+Calling the `os.path.basename(path)` will return a string of everything that comes **after** the 
+last slash in the *path* argument
+```python
+calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+
+os.path.basename(calcFilePath)
+# this returns: 'calc.exe'
+
+os.path.dirname(calcFilePath)
+# this returns: 'C:\\Windows\\System32'
+```
+or, you can call `os.path.split()` to get a tuple value of the 2 strings:
+```python
+calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+
+os.path.split(calcFilePath)
+# this returns: ('C:\\Windows\\System32', 'calc.exe')
+```
+you can also do this by calling `os.path.dirname()`/`os.path.basename()`, and placing their return 
+values inside a tuple:
+```python
+calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+
+(os.path.dirname(calcFilePath), os.path.basename(calcFilePath))
+# this returns: ('C:\\Windows\\System32', 'calc.exe')
+```
+
 ### Finding File Sizes and Folder Contents
+
+* Calling `os.path.getsize(path)` will return the size in bytes of the file 
+* Calling `os.listdir(path)` will return a list of filename strings for each file in the 
+    - important to note, this is in the `os` module, **not** `os.path`
+
+```python
+os.path.getsize('C:\\Windows\\System32\\calc.exe')
+# this returns: 27648
+
+os.listdir('C:\\Windows\\System32')
+# this returns:
+# ['0409', '12520437.cpx', '12520850.cpx', '5U877.ax', 'aaclient.dll',
+# --snip--
+# 'xwtpdui.dll', 'xwtpw32.dll', 'zh-CN', 'zh-HK', 'zh-TW', 'zipfldr.dll']
+```
+To find the total size of all the files in a directory, you can use `os.path.getsize()` and `os.listdir()` 
+together:
+```python
+totalSize = 0
+for filename in os.listdir('C:\\Windows\\System32'):
+    totalSize = totalSize + os.path.getsize(os.path.join('C:\\Windows\\System32', filename))
+print(totalSize)
+# this returns the total size in bytes
+```
 
 ### Modifying a List of Files Using Glob Patterns
 
+Using the `glob()` method is simpler than using `listdir()` to work on specific files:
+* glob patterns are a simplified version of regular expressions
+* return a *generator* object, which require a `list()` to easily view
+```python
+p = Path('C:/Users/Al/Desktop')
+
+p.glob('*')
+# this returns:
+# <generator object Path.glob at 0x000002A6E389DED0>
+
+list(p.glob('*')) # Make a list from the generator.
+# this returns:
+# [WindowsPath('C:/Users/Al/Desktop/1.png'), WindowsPath('C:/Users/Al/
+# Desktop/22-ap.pdf'), WindowsPath('C:/Users/Al/Desktop/cat.jpg'),
+#   --snip--
+# WindowsPath('C:/Users/Al/Desktop/zzz.txt')]
+```
+
+**Creating complex expressions like regex**:
+
+An asterisk `*` for "multiple of any character":
+```python
+list(p.glob('*.txt') # Lists all text files
+# this returns:
+# [WindowsPath('C:/Users/Al/Desktop/foo.txt'),
+#   --snip--
+# WindowsPath('C:/Users/Al/Desktop/zzz.txt')
+```
+The question mark `?` for "any single character":
+```python
+list(p.glob('project?.docx')
+# this returns:
+# [WindowsPath('C:/Users/Al/Desktop/project1.docx'), WindowsPath('C:/Users/Al/
+# Desktop/project2.docx'),
+#   --snip--
+# WindowsPath('C:/Users/Al/Desktop/project9.docx')]
+```
+Combining both for something complex:
+```python
+list(p.glob('*.?x?')
+# this returns:
+# [WindowsPath('C:/Users/Al/Desktop/calc.exe'), WindowsPath('C:/Users/Al/
+# Desktop/foo.txt'),
+#   --snip--
+# WindowsPath('C:/Users/Al/Desktop/zzz.txt')]
+```
+Using a for loop to iterate ober the generator that `glob()` returns:
+```python
+p = Path('C:/Users/Al/Desktop')
+for textFilePathObj in p.glob('*.txt'):
+    print(textFilePathObj) # Prints the Path object as a string
+    # Do something with the text file.
+```
+
 ### Checking Path Validity
+
+Most Python functions will crash with an error if you supply them with a path that does not exist, 
+but *Path* objects have methods to check whether a given path exists and whether it is a file/folder:
+* calling `p.exists()` returns `True` if the path exists, or returns `False` if it doesn't exist
+* calling `p.is_file()` returns `True` if the path exists **and** is a file
+* calling `p.is_dir()` returns `True` if the path exists **and** is a directory
+
+```python
+winDir = Path('C:/Windows')
+notExistsDir = Path('C:/This/Folder/Does/Not/Exist')
+calcFile = Path('C:/Windows/System32/calc.exe')
+
+winDir.exists()
+# this returns: True
+
+winDir.is_dir()
+# this returns: True
+
+notExistDir.exists()
+# this returns: False
+
+calcFile.is_File()
+# this returns: True
+
+calcFile.is_dir()
+# this returns: False
+```
+For example, checking for a flash drive with the volume name `D:\`:
+```python
+dDrive = Path('D:/')
+dDrive.exists()
+# this returns: False
+```
+Note that the older `os.path` module can accomplish the same task with:
+* `os.path.exists(path)`
+* `os.path.isfile(path)`
+* `os.path.isdir(path)`
 
 
 ## The File Reading/Writing Process
+
+*Plaintext files* contain only basic text characters and do not include font, size, or color info:
+* *.txt* -- text files
+* *.py* -- Python script files
+
+*Binary files* are all other file types, such as:
+* word processing documents
+* PDFs
+* images
+* spreadsheets
+* executable programs
 
 ### Opening Files with the open() Function
 
