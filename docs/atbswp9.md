@@ -474,28 +474,199 @@ Note that the older `os.path` module can accomplish the same task with:
 
 ## The File Reading/Writing Process
 
-*Plaintext files* contain only basic text characters and do not include font, size, or color info:
+**Plaintext files** contain only basic text characters and do not include font, size, or color info:
 * *.txt* -- text files
 * *.py* -- Python script files
 
-*Binary files* are all other file types, such as:
+**Binary files** are all other file types, such as:
 * word processing documents
 * PDFs
 * images
 * spreadsheets
 * executable programs
 
+The `pathlib` module's `read_text()` method returns a string of the full contents of a text file
+
+The `write_text()` method creates a new text file, or overwrites an existing one, with the string 
+passed to it
+
+```python
+from pathlib import Path
+p = Path('spam.txt')
+
+p.write_text('Hello, world!')
+# this returns: 13 (the number characters written to the file)
+
+p.read_text()
+# this returns: 'Hello, world!'
+```
+Note that *Path* object methods only provide basic interactions with files, the more common way of 
+writing to a file involves using the `open()` function:
+1. Call the `open()` function to return a *File* object
+2. Call the `read()` or `write()` method on the *File* object
+3. Close the file by calling the `close()` method on the *File* object
+
 ### Opening Files with the open() Function
+
+To open a file with the `open()` function, you pass it a string path indicating the file you want 
+to open:
+```python
+helloFile = open(Path.home() / 'hello.txt')
+```
+Note that the `open()` function returns a *File* object
+
+You can also pass strings:
+```python
+# on Windows:
+helloFile = open('C:\\Users\\gestylinaga\\hello.txt')
+
+# on macOS:
+helloFile = open('/Users/you_home_folder/hello.txt')
+```
+Note that the `open()` function only accepts *Path* objects as of Python 3.6; In previous versions, 
+you always need to pass a string
+
+Also note that by default, these commands will open a file in "reading plaintext" mode, or *read 
+mode*. Another way to explicitly specify the mode is by passing the string value `'r'` as a second 
+argument:
+```python
+open('/Users/Al/hello.txt', 'r') == open('Users/Al/hello.txt')
+```
+Remember that calling `open()` returns a *File* object:
+* a *File* object represents a file on your computer
+* simply another type of value in Python (like lists/dictionaries)
+* calling methods on the *File* object allows you to read/write the associating file
 
 ### Reading the Contents of Files
 
+The `read()` method lets you read the entire contents of a file as a string value:
+```python
+helloFile = open('C:\\Users\\gestylinaga\\hello.txt')
+helloContent = helloFile.read()
+
+helloContent
+#this returns: 'Hello, world!' (contents of hello.txt)
+```
+Alternatively, you can use `readlines()` to get a **list** of string values from the file:
+```python
+sonnetFile = open(Path.home() / 'sonnet29.txt')
+sonnetFile.readlines()
+
+# this returns: 
+# [When, in disgrace with fortune and men's eyes,\n', ' I all alone beweep my
+# outcast state,\n', And trouble deaf heaven with my bootless cries,\n', And
+# look upon myself and curse my fate,']
+```
+
 ### Writing to Files
+
+To write to a file, you must open it in "write plaintext"/"append plaintext", or *write mode*/*append 
+mode* for short:
+* `'w'` write mode will overwrite the existing file and start from scratch
+    - just like overwriting a variable value
+* `'a'` append mode will append text to the end of the existing file
+    - just like appending an item to a list value
+```python
+baconFile = open('bacon.txt', 'w') # Write mode
+baconFile.write('Hello, world!\n')
+# this returns: 13 (number of characters written)
+
+baconFile.close()
+baconFile = open('bacon.txt', 'a') # Append mode
+baconFile.write('Bacon is not a vegetable.')
+# this returns: 25 (number of characters written)
+
+baconFile.close()
+baconFile = open('bacon.txt')
+content = baconFile.read()
+baconFile.close()
+print(content)
+# this returns:
+# Hello, world!
+# Bacon is not a vegetable.
+```
 
 
 ## Saving Variables with the Shelve Module
 
+The `shelve` module lets you save variables in your Python programs to binary shelf files:
+```python
+import shelve
+shelfFile = shelve.open('mydata')
+cats = ['Nollie', 'Killua', 'Mookie']
+shelfFile['cats'] = cats
+shelfFile.close()
+```
+This lets your program restore data to variables from your hard drive, adding a *Save* and *Open* 
+features to your program
+
+Notice that you can edit shelf values like a dictionary
+
+Note that this creates new files in your current working directory:
+* on Windows: `mydata.bak`, `mydata.dat`, and `mydata.dir`
+* on macOS: `mydata.db`
+
+These shelf files can be reopened to retrieve their data:
+```python
+import shelve
+shelfFile = shelve.open('mydata')
+type(shelfFile)
+# this returns: <class 'shelve.DbfilenameShelf'>
+
+shelfFile['cats'] # to check if previous list was saved
+# this returns ['Nollie', 'Killua', 'Mookie']
+
+shelfFile.close()
+```
+Notice that shelf values don't have to be opened in read/write mode, they can do both once opened
+
+Note that since shelf values behave like dictionaries, they can be used with `keys()`/`values()` 
+methods:
+```python
+shelfFile = shelve.open('mydata')
+list(shelfFile.keys())
+# this returns: ['cats']
+
+list(shelfFile.values())
+# this returns: [['Nollie', 'Killua', 'Mookie']]
+
+shelfFile.close()
+```
+
 
 ## Saving Variables with the pprint.pformat() Function
+
+Using the `pprint` module, the `pformat()` function formats dictionaries to be easy to read **and** 
+synactically correct Python code:
+```python
+import pprint
+
+dogs = [{'name': 'Mookie', 'desc': 'smol'}, {'name': 'Chacha', 'desc': 'round'}]
+pprint.pformat(dogs)
+# this returns: "[{'desc': 'smol', 'name': 'Mookie'}, {'desc': 'round', 'name': 'Chacha'}]"
+
+fileObj = open('myDogs.py', 'w') # new .py file
+fileObj.write('dogs = ' + pprint.pformat(dogs) + '\n')
+# this returns: 81 (number of characters written)
+
+fileObj.close()
+```
+This saves the formatted dictionary as a new file `myDogs.py`, a Python script, which can be 
+imported just like any other module:
+```python
+import myDogs
+
+myDogs.dogs
+# this returns: [{'desc': 'smol', 'name': 'Mookie'}, {'desc': 'round', 'name': 'Chacha'}]
+
+myDogs.dogs[0]
+# this returns: {'desc': 'smol', 'name': 'Mookie'}
+
+myDogs.dogs[0]['name']
+# this returns: 'Mookie'
+```
+Note that only basic data types (integers, strings, floats, lists, dictionaries) can be written as 
+simple text files. *File* objects, for example, **cannot** be encoded as text
 
 
 ## Summary
