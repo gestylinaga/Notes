@@ -15,7 +15,7 @@ Chapters:
 7. [Pattern Matching with Regular Expressions](atbswp7.md)
 8. [Input Validation](atbswp8.md)
 9. [Reading and Writing Files](atbswp9.md)
-10. Organizing Files
+10. [Organizing Files](atbswp10.md)
 11. Debugging
 12. Web Scraping
 13. Working with Excel Spreadsheets
