@@ -671,6 +671,19 @@ simple text files. *File* objects, for example, **cannot** be encoded as text
 
 ## Summary
 
+* Files are oganized into **folders**, aka **directories**, and a **path** describes the location 
+of a file
+* Every program has a **current working directory**, which allows you to specify file paths 
+**relative** to the *cwd* instead of always typing the full , aka **absolute**, path
+* The `pathlib` and `os.path` modules have functions for manipulating file paths
+* Programs can also directly interact with the contents of text files
+* The `open()` function can open files to read their contents:
+    - with the `read()` method, as one large string
+    - with the `readlines()` method, as a list of strings
+* The `open()` function can also open files in:
+    - `'w'` write mode, to create new text files
+    - `'a'` append mode, to add to existing text files
+
 
 ## Practice Questions
 
@@ -679,16 +692,29 @@ simple text files. *File* objects, for example, **cannot** be encoded as text
 2. What does an absolute path start with?
     - `always starts with the root folder`
 3. What does `Path('C:/Users') / 'Al'` evaluate to on Windows?
+    - `WindowsPath('C:/Users/Al')`
 4. What does `'C:/Users' / 'Al'` evaluate to on Windows?
+    - `TypeError`
 5. What do the `os.getcwd()` and `os.chdir()` functions do?
+    - `os.getcwd() means 'get current working directory'`
+    - `os.chdir() means 'change directory'`
 6. What are the `.` and `..` folders?
     -   `'.' is 'this directory'`
     - `'..' is 'parent directory'`
 7. In `C:\bacon\eggs\spam.txt`, which part is the dir name, and which part is the base name?
+    - `'C:\bacon\eggs' is the dir name`
+    - `'spam.txt' is the base name`
 8. What are the three “mode” arguments that can be passed to the `open()` function?
+    - `'r' = read mode`
+    - `'w' = write mode`
+    - `'a' = append mode`
 9. What happens if an existing file is opened in write mode?
+    - `it will be overwritten`
 10. What is the difference between the `read()` and `readlines()` methods?
+    - `'read()' displays as one long string`
+    - `'readlines()' returns a list of strings`
 11. What data structure does a shelf value resemble?
+    - `dictionaries (keys and values)`
 
 
 ---
