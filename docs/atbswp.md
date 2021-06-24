@@ -22,6 +22,10 @@ Chapters:
 14. Working with Google Spreadsheets
 15. Working with PDF and Word Documents
 16. Working with CSV Files and JSON Data
+17. Keeping Time, Scheduling Tasks, and Launching Programs
+18. Sending Email and Text Messages
+19. Manipulating Images
+20. Controlling the Keyboard and Mouse with GUI Automation
 
 
 ---
