@@ -2,21 +2,21 @@
 
 Consider the tasks:
 * Making copies of all PDF files (and *only* the PDF files) in every subfolder of a folder
-* Removing the leading zeros in the filename for every file in a folder of hunrededs of files
-    - ie: spam001.txt, spam002.txt, spam003.txt
+* Removing the leading zeros in the filename for every file in a folder of hundreds of files
+    - ie: *spam001.txt*, *spam002.txt*, *spam003.txt*
 * Compressing the contents of several folders into one zip file (like a backup system)
 
 These can all be **automated** by Python
 
 Note that filetype extensions are shown automatically on **Linux and macOS**
 
-On **Windows**:
+But on **Windows**:
 1. Start
 2. Control Panel
 3. Appearance and Personalization
 4. Folder Options
-    - View tab
-    - Advanced Settings
+    - In the 'View' tab
+    - Under Advanced Settings
     - Uncheck 'Hide extensions for known file types'
 
 
