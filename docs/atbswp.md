@@ -31,11 +31,12 @@ Chapters:
 ---
 ## Links
 
-[Official Website](https://automatetheboringstuff.com/)
+[Official Website - Full Book Available for Free Here](https://automatetheboringstuff.com/)
 
-First 15 course videos on [Youtube](https://www.youtube.com/watch?v=1F_OgqRuSdI&list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW)
+First 15 (of 50) course videos on [Youtube](https://www.youtube.com/watch?v=1F_OgqRuSdI&list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW)
 
-[Download](https://www.nostarch.com/download/Automate_the_Boring_Stuff_onlinematerials.zip) the online course materials
+[Download](https://www.nostarch.com/download/Automate_the_Boring_Stuff_onlinematerials.zip) the 
+online course materials (ZIP file)
 
 ---
 [back to Index/Table of Contents](index.md)
