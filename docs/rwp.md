@@ -2,7 +2,7 @@
 > A Hacker's Guide to Solving Problems with Code
 >> by Lee Vaughan
 
-Introduction
+[Introduction](rwpIntro.md)
 
 Chapters:
 1. Saving Shipwrecked Sailors with Bayes' Rule
