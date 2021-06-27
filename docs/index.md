@@ -5,6 +5,8 @@
 * [Automate the Boring Stuff with Python by Al Sweigart](atbswp.md) 
 -- Book Notes
 
+* [Beyond the Basic Stuff with Python by Al Sweigart](btbswp.md) -- Book Notes
+
 * [Real World Python by Lee Vaughan](rwp.md) -- Book Notes
 
 

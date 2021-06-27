@@ -4,6 +4,8 @@ Notes typed in markdown.
 
 Automate the Boring Stuff with Python -- [Book Notes](docs/atbswp.md)
 
+Beyond the Basic Stuff with Python -- [Book Notes](docs/btbswp.md)
+
 Real World Python -- [Book Notes](docs/rwp.md)
 
 TryHackMe.com -- [Room Writeups](docs/thm.md)
