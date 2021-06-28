@@ -16,7 +16,7 @@ Chapters:
 8. [Input Validation](atbswp8.md)
 9. [Reading and Writing Files](atbswp9.md)
 10. [Organizing Files](atbswp10.md)
-11. Debugging
+11. [Debugging](atbswp11.md)
 12. Web Scraping
 13. Working with Excel Spreadsheets
 14. Working with Google Spreadsheets
