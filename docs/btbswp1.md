@@ -9,21 +9,211 @@ data structure knowledge
 
 ## How to Understand Python Error Messages
 
+Finding answers is a two-step process:
+1. examining the traceback
+2. doing an internet search of the error message
+
 ### Examining Tracebacks
 
+Python programs crash when the code raises an exception that an `except` statement doesn't handle
+
+When this happens, Python displays the exception's message and a **traceback** (aka a *stack trace*)
+* shows the place in your program where the exception happened and the trail of functions that led 
+up to it
+
+Example buggy program, *abcTraceback.py*:
+```python
+def a():
+    print('Start of a()')
+    b()                   # calls b()
+
+def b():
+    print('Start of b()')
+    c()                   # calls c()
+
+def c():
+    print('Start of c()')
+    42 / 0                # Causes a zero divide error
+
+a()                       # calls a()
+```
+this returns:
+```
+Start of a()
+Start of b()
+Start of c()
+Traceback (most recent call last):
+  File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 13, in <module>
+    a()                   # calls a()
+  File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 3, in a
+    b()                   # calls b()
+  File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 7, in b
+    c()                   # calls c()
+  File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 11, in c
+    42 / 0                # Causes a zero divide error
+ZeroDivisionError: division by zero
+```
+**Traceback Breakdown**: (by line)
+```
+Traceback (most recent call last):
+```
+* lets you know that the following message is a traceback
+* also indicates that calls are listed in order of when they were called (most recent call being last)
+```
+File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 13, in <module>
+    a()                   # calls a()
+```
+* **Frame Summary** -- show information inside a frame object
+* **Frame Object** -- hold local variables and other data associated with function calls
+    - created when the function is called; destroyed when the function returns
+```
+File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 3, in a
+  b()                   # calls b()
+File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 7, in b
+  c()                   # calls c()
+```
+* these next 4 lines are the next 2 frame summaries
+* notice that the `print()` calls are not included in the traceback
+    - only the lines containing function calls that lead up to the exception
+```
+File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 11, in c
+  42 / 0                # Causes a zero divide error
+ZeroDivisionError: division by zero
+```
+* The last frame summary shows the line that caused the unhandled exception
+* also shows the name of the exception and the exception's message
+
+Note that the line number given by the traceback is where Python finally detected an error, not 
+necessarily where the bug is
+
+In the above example, the `ZeroDivisionError` is easy to detect, because we can see the line:
+```
+42 / 0
+```
+in the code, but for a more complicated example, *zeroDivideTraceback.py*:
+```python
+def spam(number1, number2):
+    return number1 / (number2 - 42)
+
+spam(101, 42)
+```
+this returns:
+```
+Traceback (most recent call last):
+  File "C:\Users\gestylinaga\Github\Notes\zeroDivideTraceback.py", line 4, in <module>
+    spam(101, 42)
+  File "C:\Users\gestylinaga\Github\Notes\zeroDivideTraceback.py", line 2, in spam
+    return number1 / (number2 - 42)
+ZeroDivisionError: division by zero
+```
+Notice how you get the same `ZeroDivisionError`, but the cause is not as obvious
+
+Sometimes the traceback might indicate an error on the line **after** the true cause of the bug:
+```python
+print('Hello.' # missing closing )
+print('How are you?')
+```
+this returns:
+```
+File "<stdin>", line 2
+    print('How are you?')
+    ^
+SyntaxError: invalid syntax
+```
+Notice how the error is on line 1, but the error message shows line 2
+
+This is because the Python interpreter didn't notice the syntax error until it read the second line. 
+Traceback errors can indicate where things went wrong, but that isn't always the same as where the 
+actual cause of the bug is.
+
 ### Searching for Error Messages
+
+Error messages are usually short, and **not** full sentences
+
+They are meant to be *reminders* to programmers who see them often
+
+But, for more information you can type them into an internet search engine:
+* include the keyword `python`
+* use double quotes `""` to enlcose the error message
+
+ie: typing `python "ZeroDivisionError: division by zero"` into google
 
 
 ## Preventing Errors with Linters
 
+The best way to fix mistakes it to not make them in the first place
+
+Lint software, or *linters*, are applications that analyze your source code to warn you of any 
+potential errors
+* The name references the small fibers and debris collected by a clothes dryer's lint trap
+
+Many text editors and IDEs incorporate a linter that runs in the background, and can point out 
+problems in real time
+
+If your editor/IDE does **not** come with a linter, you can install the plug-in/module `pyflakes`:
+* [Official Pyflakes Website](https://pypi.org/project/pyflakes/)
+* on Windows: `pip install --user pyflakes`
+* on Linux/macOS: `pip3 install pyflakes`
+
+Note that IDLE, the IDE that comes with Python, does **not** have a linter, or the capability of 
+installing one
+
 
 ## How to Ask for Progamming Help
 
+There is an etiquette to efficiently asking for programming advice on the internet
+
+Asking strangers for help should be a last resort:
+* no guaranteed timeframe response
+* not guaranteed correct
+
+Instead you should search for question that have already been answered, or online documentation
+
+Common mistakes to avoid:
+* asking if it's ok to ask a question, instead of just asking it
+* implying your question, instead of directly asking it
+* asking your question on the wrong forum/website
+* writing an unspecific headline/title like "I have a problem" or "Please help"
+* sating "my program doesn't work", but not explaining what you want it to do
+* not including the **full** error message
+* not sharing your code
+* sharing poorly formatted code
+* not explaining what you've already tried
+* not giving operation system or version information
+* asking someone to write a program for you
+
+Remember someone's first step in helping you is usually running your code, and trying to reproduce 
+your errors. It far more common to give too little information than too much.
+
 ### Limit Back and Forth by Providing your Information Upfront
+
+* asking if it's ok to ask a question, instead of just asking it
+
+Asking for help isn't like a real life conversation, there's no need for niceties. In real conversation, 
+asking if can ask a question is fine, it checks to see if the listener has time to help. Online, people 
+can just hold off on answering until they know the answer, no need to wait.
 
 ### State Your Question in the Form of an Actual Question 
 
+* implying your question, instead of directly asking it
+
+It's easy to assume that someone helping you knows exactly what you're talking about when you explain 
+your problem, but that is **not** always the case. Although sentences that start with, "I want to..." 
+and "The code isn't working" can imply a question, be sure to include explicit questions.
+
+Literally, just a sentence with a question mark `?`, otherwise it's probably unclear what you're asking
+
 ### Ask Your Question on the Appropriate Website
+
+* asking your question on the wrong forum/website
+
+Asking a Python question on a JavaScript forum, or an algorithm question on a network security 
+mailing list is obviously unproductive
+
+Mailing lists and forums usually have a *Frequently Asked Questions* (aka FAQ), that detail what 
+topics are appropriate to discuss there
+
+see [Python's Official Help Page](https://www.python.org/about/help/)
 
 ### Summarize Your Question in the Headline
 
