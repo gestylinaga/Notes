@@ -350,41 +350,151 @@ enter a number'`, you wan't to use a `print()` call
 | ERROR | `logging.error()` | Used to record an error that caused the program to fail to do something. |
 | CRITICAL | `logging.critical()` | Highest level. Used to indicate a fatal error that has caused or is about to cause the program to stop running entirely. |
 
+Note that logging levels are suggestions, and ultimately, it is up to you to decide which category 
+your log message falls into
+
+Examples:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+
+logging.debug('Some debugging details.')
+# this returns: 2021-06-27 23:22:46,797 -  DEBUG -  Some debugging details.
+
+logging.info('The logging module is working.')
+# this returns: 2021-06-27 23:23:03,507 -  INFO -  The logging module is working.
+
+logging.warning('An error message is about to be logged.')
+# this returns: 2021-06-27 23:23:23,828 -  WARNING -  An error message is about to be logged.
+
+logging.error('An error has occured.')
+# this returns: 2021-06-27 23:23:45,824 -  ERROR -  An error has occured. 
+
+logging.critical('The program is unable to recover!')
+# this returns: 2021-06-27 23:24:01,959 -  CRITICAL -  The program is unable to recover!
+```
+The benefits of using logging levels is that you can change what priority of logging message you 
+want to see:
+* passing `logging.DEBUG` to the `basicConfig()` function's `level` keyword (the lowest level), 
+will show messages from **all** logging levels
+* similarly, passing `logging.ERROR`, will only show ERROR and CRITICAL messages (skipping the 
+lower levels DEBUG, INFO, and WARNING)
 
 ### Disabling Logging
 
+The `logging.disable()` function disables logging messages, saving you from removing all logging 
+calls by hand
+
+You simply pass `logging.disable()` a logging level, and it will suppress all log messages at that 
+level or lower
+
+For example, adding `logging.disable(logging.CRITICAL)` will disable logging entirely:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+
+logging.critical('Critical error! Critical error!')
+# this returns: 2021-06-27 23:31:54,908 -  CRITICAL -  Critical error! Critical error!
+
+logging.disable(logging.CRITICAL) # No logging after this point
+logging.critical('Critical error! Critical error!')
+logging.error('Error! Error!')
+```
+Note that since `logging.disable()` will disable all messages **after** it, it is wise to put it 
+near the `import logging` line. This way, you can easily find it to comment/uncomment the call as 
+needed.
+
 ### Logging to a File
+
+Instead of displaying the log messages to the screen, you can write them to a text file
+
+The `logging.basicConfig()` function takes a `filename` keyword argument like so:
+```python
+import logging
+logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+```
+In this example, the log messages will be saved to a file named: `myProgramLog.txt`
 
 
 ## Mu's Debugger
+
+The *debugger* is a feature of the Mu editor, IDLE, and other editor software that allows you to 
+execute your program **one line at a time**
+
+The debugger will run a single line of code, and then wait for you to tell it to continue
+
+To run the debugger in Mu, click the `Debug` button in the top row of buttons
+
+Other Buttons:
+* `Continue` will cause the program to execute normally until it terminates or reaches a *breakpoint*
+* `Step In` will cause the debugger to execute the next line of code and then pause again
+    - if the next line is a function call, the debugger will "step into" that function, and jump to the first line of that function
+* `Step Over` will execute the next line of code, similar to `Step In`, but will execute functions at normal speed before pausing again
+* `Step Out` will cause the debugger to execute lines of code at full speed until it returns from the current function
+    - used if you have "stepped into" a function, and want to quickly get out
+* `Stop` will stop debugging entirely, immediately terminating the program without executing the rest of the program
 
 ### Debugging a Number Adding Program
 
 ### Breakpoints
 
+A *breakpoint* can be set on a specific line of code and forces the debugger to pause whenever it 
+reaches that line
+
 
 ## Summary
+
+Assertions, exceptions, logging, and the debugger are all valuable tools to find and prevent bugs in 
+your program:
+* Assertions with `assert` statements are a good way to implement "Sanity Checks"
+    - only for errors that the program shouldn't try to recover from
+* An exception can be caught with the `try`/`except` statements
+* The `loggging` module is a good way to look into your code while it's running
+    - more convenient than using `print()` calls to debug
+* The debugger lets you step through your program one line at a time
+    - alternatively, you can run it at regular speed, but stop at a *breakpoint*
 
 
 ## Practice Questions
 
 1. Write an assert statement that triggers an AssertionError if the variable spam is an integer 
 less than 10.
+    - `assert (spam.isdecimal()) and (spam < 10)`
 2. Write an assert statement that triggers an AssertionError if the variables eggs and bacon 
 contain strings that are the same as each other, even if their cases are different (that is, 
 'hello' and 'hello' are considered the same, and 'goodbye' and 'GOODbye' are also considered the 
 same).
+    - `assert eggs.lower() != bacon.lower()`
 3. Write an assert statement that always triggers an AssertionError.
+    - `assert True`
 4. What are the two lines that your program must have in order to be able to call logging.debug()?
+    - `import logging`
+    - `logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')`
 5. What are the two lines that your program must have in order to have logging.debug() send a 
 logging message to a file named programLog.txt?
+    - `import logging`
+    - `logging.basicConfig(filename='programLog.txt', level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')`
 6. What are the five logging levels?
+    - DEBUG (lowest)
+    - INFO
+    - WARNING
+    - ERROR
+    - CRITICAL (highest)
 7. What line of code can you add to disable all logging messages in your program?
+    - `logging.disable(logging.CRITICAL)`
 8. Why is using logging messages better than using print() to display the same message?
+    - `different logging levels`
+    - `one line cleanup`
 9. What are the differences between the Step Over, Step In, and Step Out buttons in the debugger?
+    - `'Step Over' runs functions at full speed, then pauses`
+    - `'Step In' jumps to first line of funtion, then pauses`
+    - `'Step Out' is used after 'Step In' to run full speed until it exits the function`
 10. After you click Continue, when will the debugger stop?
+    - `program terminates, or hits a breakpoint`
 11. What is a breakpoint?
+    - `a line that forces your debugger to pause there`
 12. How do you set a breakpoint on a line of code in Mu?
+    - `click the line number, leaving a red dot`
 
 
 ---
