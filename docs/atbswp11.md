@@ -246,11 +246,110 @@ can save you a lot of future debugging effort
 
 ## Logging
 
+*Logging* is a great way to understand what's happening in your program and in what order it's
+happening. Python's `logging` module makes it easy to create a record of custom messages that you 
+write
+
 ### Using the logging Module
+
+To enable the `logging` module to display log messages on your screen as your program runs:
+```python
+#!/usr/bin/env python3
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)
+s -  %(message)s')
+```
+Note:
+* the code is at the top of the program, but still beneath the hashbang `#!` line
+* when Python logs an event, it creates a *LogRecord* object
+* the `logging` module's `basicConfig()` function lets you specify what details about the *LogRecord*
+object you want to see
+
+Example program *factorialLog.py*:(for finding factorials)
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+logging.debug('Start of program')
+
+def factorial(n):
+    logging.debug('Start of factorial(%s%%)' % (n))
+    total = 1
+    for i in range(n + 1): # intentional error here
+        total *= i
+        logging.debug('i is ' + str(i) + ', total is ' + str(total))
+    logging.debug('End of factorial(%s%%)' % (n))
+    return total
+
+print(factorial(5))
+logging.debug('End of program')
+```
+this returns:
+```
+ 2021-06-27 21:19:08,632 -  DEBUG -  Start of program
+ 2021-06-27 21:19:08,632 -  DEBUG -  Start of factorial(5%)
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 0, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 1, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 2, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 3, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 4, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  i is 5, total is 0
+ 2021-06-27 21:19:08,632 -  DEBUG -  End of factorial(5%)
+0
+ 2021-06-27 21:19:08,632 -  DEBUG -  End of program
+```
+Notice how the total is `0` which is incorrect
+
+This happens because the `for` loop is starting at `0`, which multiplied by anything is also `0`
+
+so changing the `for` loop line to: `for i in range(1, n + 1)` (to change the starting range to 1) 
+and running the program again returns:
+```
+ 2021-06-27 21:21:16,631 -  DEBUG -  Start of program
+ 2021-06-27 21:21:16,631 -  DEBUG -  Start of factorial(5%)
+ 2021-06-27 21:21:16,631 -  DEBUG -  i is 1, total is 1
+ 2021-06-27 21:21:16,631 -  DEBUG -  i is 2, total is 2
+ 2021-06-27 21:21:16,631 -  DEBUG -  i is 3, total is 6
+ 2021-06-27 21:21:16,631 -  DEBUG -  i is 4, total is 24
+ 2021-06-27 21:21:16,632 -  DEBUG -  i is 5, total is 120
+ 2021-06-27 21:21:16,632 -  DEBUG -  End of factorial(5%)
+120
+ 2021-06-27 21:21:16,632 -  DEBUG -  End of program
+```
+which shows the correct value of `120`
 
 ### Don't Debug with the print() Function
 
+Typing:
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+```
+every time might be annoying, but using `print()` calls instead is **not** a shortcut:
+* you'll have to remove all the `print()` statements after debugging
+    - possible to accidentaly delete *non-log* print statements
+* can disable logging with 1 line
+    - `logging.disable(logging.CRITICAL)`
+
+Note that log messages are intended for the programmer, not the user
+
+Users don't care about the contents of some dictionary value you need to help with debugging; This 
+is where you would use logging
+
+For messages that the user will want to see, like `'File not found'` or `'Invalid input, please 
+enter a number'`, you wan't to use a `print()` call
+
 ### Logging Levels
+
+*Logging Levels* provide a way to categorize your log messages by importance:
+
+| Level | Logging function | Description |
+| --- | --- | --- |
+| DEBUG | `logging.debug()` | Lowest level. Used for small details. |
+| INFO | `logging.info()` | Used to record information on general events in your program or confirm that things are working at their point in the program. |
+| WARNING | `logging.warning()` | Used to indicate a potential problem that doesn't prevent the program from working but might do so in the future. |
+| ERROR | `logging.error()` | Used to record an error that caused the program to fail to do something. |
+| CRITICAL | `logging.critical()` | Highest level. Used to indicate a fatal error that has caused or is about to cause the program to stop running entirely. |
+
 
 ### Disabling Logging
 
