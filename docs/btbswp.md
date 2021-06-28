@@ -5,7 +5,7 @@
 [Introduction](btbswpIntro.md)
 
 Chapters:
-1. Dealing with Errors and Asking for Help
+1. [Dealing with Errors and Asking for Help](btbswp1.md)
 2. Environment Setup and the Command Line
 3. Code Formatting with Black
 4. Choosing Understandable Names
