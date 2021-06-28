@@ -85,10 +85,163 @@ A traceback includes:
 * the line number of the line that caused the error
 * the sequence of the function calls that led to the error (aka the *call stack*)
 
+Consider *errorExample.py*:
+```python
+def spam():
+    bacon()
+
+def bacon():
+    raise Exception('This is the error message.')
+
+spam()
+```
+this returns the traceback:
+```
+Traceback (most recent call last):
+  File "errorExample.py", line 7, in <module>
+    spam()
+  File "errorExample.py", line 2, in spam
+    bacon()
+  File "errorExample.py", line 5, in bacon
+    raise Exception('This is the error message.')
+Exception: This is the error message.
+```
+Notice that the error occurs on `line 5`, which was called by `line 2`, which in turn was called by 
+`line 7`. This is helpful in programs where functions can be called from multiple places, the call 
+stack can help determine which call led to the error
+
+Python displays the traceback whenever a raised exception goes unhandled, but you can also obtain it 
+as a string by calling `traceback.format_exc()`. This is useful if you want the information from an 
+exception's traceback, but also want an `except` statement to gracefully handle the exception. (Note 
+that this requires importing Python's `traceback` module)
+
+You can write the traceback information to a text file, and keep your program running:
+```python
+import traceback
+
+try:
+    raise Exception('This is the error message.')
+except:
+    errorFile = open('errorInfo.txt', 'w')
+    errorFile.write(traceback.format_exc())
+    errorFile.close()
+    print('The traceback info was written to errorInfo.txt.')
+
+# this returns:
+# 111 (the number of characters written)
+# The traceback info was written to errorInfo.txt.
+```
+
 
 ## Assertions
 
+An **assertion** is a sanity check to make sure your code isn't doing something obviously wrong
+
+These 'sanity checks' are performed by `assert` statements, and if failed raise an `AssertionError` 
+exception
+
+An `assert` statement consists of:
+* the `assert` keyword
+* a condition (a `True`/`False`)
+* a comma `,`
+* a string to display when the condition is `False`
+
+In plain english: "I assert that the condition holds true, and if not, there is a bug somewhere, so 
+immediately stop the program."
+
+```python
+ages = [26, 57, 92, 54, 22, 15, 17, 80, 47, 73]
+ages.sort()
+ages
+
+# this returns:
+# [15, 17, 22, 26, 47, 54, 57, 73, 80, 92]
+
+assert ages[0] <= ages[-1] # asserts that the first age is <= the last age
+```
+Note that the `assert` statement here, asserts that the first item in `ages` should be less than or 
+equal to the last one. **This is the sanity check**. If the code in `sort()` is bug-free, then the 
+assertation would be true. Because the `ages[0] <= ages[-1]` expression returns `True`, nothing 
+happens.
+
+However, if an error does occur: (like using `reverse()` instead of `sort()`)
+```python
+ages = [26, 57, 92, 54, 22, 15, 17, 80, 47, 73]
+ages.reverse()
+ages
+
+# this returns:
+# [73, 47, 80, 17, 15, 22, 54, 92, 57, 26]
+
+assert ages[0] <= ages[-1] # asserts that the first age is <= the last age
+```
+this returns:
+```
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError
+```
+Unlike exceptions, your code should **not** handle `assert` statements with `try`/`except`
+
+If an `assert` fails, your program **should** crash, and shorten the time between the original cause 
+of the but and when you first notice it. This reduces the amount of code you will have to check 
+before finding the bug's cause
+
+Assertions are for programmer errors, not user errors
+
+Meaning they should **not** be used in place of exception statements
+
+> Note that Python scripts run with the `-O` flag like this:
+>> `python3 -O myScript.py`
+>
+> will skip `assert` statements
+>
+> this can be used when running in a production setting that requires peak performance
+
+Note that assertions also aren't a replacement for comprehensive testing
+
 ### Using an Assertion in a Traffic Light Simulation
+
+Consider building a traffic light simulation program
+* the stoplights of the intersection are represented as a dictionary
+    - key `'ns'` for north-south stoplights
+    - key `'ew'` for east-west stoplights
+    - values as strings: `'green'`, `'yellow'`, `'red'`
+
+Example:
+```python
+market_2nd = {'ns': 'green', 'ew': 'red'}
+mission_16th = {'ns': 'red', 'ew': 'green'}
+```
+so a simple function **could** be:
+```python
+def switchLights(stoplight):
+    for key in stoplight.keys():
+        if stoplight[key] == 'green':
+            stoplight[key] = 'yellow'
+        elif stoplight[key] == 'yellow':
+            stoplight[key] = 'red'
+        elif stoplight[key] == 'red':
+            stoplight[key] = 'green'
+
+switchLights(market_2nd)
+```
+While the program **won't** crash, the virtual cars will, unless you add this `assert` statement:
+```python
+assert 'red' in stoplight.values(), 'Neither light is red! ' + str(stoplight)
+```
+this ensures that at least 1 direction is always red, and will return this error message:
+```
+Traceback (most recent call last):
+    File "carSim.py", line 14, in <module>
+        switchLights(market_2nd)
+    File "carSim.py", line 13, in switchLights
+        assert 'red' in stoplight.values(), 'Neither light is red! ' +
+   str(stoplight)
+   AssertionError: Neither light is red! {'ns': 'yellow', 'ew': 'green'}
+```
+While your program crashing is not ideal, it immediately points out that a sanity check failed, and 
+can save you a lot of future debugging effort
 
 
 ## Logging
