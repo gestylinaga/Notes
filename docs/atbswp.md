@@ -17,7 +17,7 @@ Chapters:
 9. [Reading and Writing Files](atbswp9.md)
 10. [Organizing Files](atbswp10.md)
 11. [Debugging](atbswp11.md)
-12. Web Scraping
+12. [Web Scraping](atbswp12.md)
 13. Working with Excel Spreadsheets
 14. Working with Google Spreadsheets
 15. Working with PDF and Word Documents
