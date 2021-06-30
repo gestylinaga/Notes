@@ -6,7 +6,7 @@
 
 Chapters:
 1. [Dealing with Errors and Asking for Help](btbswp1.md)
-2. Environment Setup and the Command Line
+2. [Environment Setup and the Command Line](btbswp2.md)
 3. Code Formatting with Black
 4. Choosing Understandable Names
 5. Finding Code Smells
