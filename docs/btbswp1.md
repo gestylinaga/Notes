@@ -110,7 +110,7 @@ Notice how you get the same `ZeroDivisionError`, but the cause is not as obvious
 
 Sometimes the traceback might indicate an error on the line **after** the true cause of the bug:
 ```python
-print('Hello.' # missing closing )
+print('Hello.' # missing the closing `)`
 print('How are you?')
 ```
 this returns:
@@ -187,6 +187,7 @@ your errors. It far more common to give too little information than too much.
 
 ### Limit Back and Forth by Providing your Information Upfront
 
+Avoid:
 * asking if it's ok to ask a question, instead of just asking it
 
 Asking for help isn't like a real life conversation, there's no need for niceties. In real conversation, 
@@ -195,6 +196,7 @@ can just hold off on answering until they know the answer, no need to wait.
 
 ### State Your Question in the Form of an Actual Question 
 
+Avoid:
 * implying your question, instead of directly asking it
 
 It's easy to assume that someone helping you knows exactly what you're talking about when you explain 
@@ -205,6 +207,7 @@ Literally, just a sentence with a question mark `?`, otherwise it's probably unc
 
 ### Ask Your Question on the Appropriate Website
 
+Avoid:
 * asking your question on the wrong forum/website
 
 Asking a Python question on a JavaScript forum, or an algorithm question on a network security 
@@ -217,20 +220,82 @@ see [Python's Official Help Page](https://www.python.org/about/help/)
 
 ### Summarize Your Question in the Headline
 
+Avoid:
+* writing an unspecific headline/title like "I have a problem" or "Please help"
+
+Documenting your question, and the subsequent answer, for future programmers on the internet
+is part of the benefit of asking it online. Having a concise title/headline makes it easier 
+for search engines to find. For emails, having a meaningful subject line lets whoever is helping 
+see your question while scanning their inbox.
+
 ### Explain What You Want the Code to Do
+
+Avoid:
+* sating "my program doesn't work", but not explaining what you want it to do
+
+Your/your program's intentions are not always obvious. Even a simple question like "Why am I 
+getting this error?" benefits from knowing the end-goal. In some cases, someone might point 
+out a completely different approach, and you can abandon your problem altogether.
 
 ### Include the Full Error Message
 
+Avoid:
+* not including the **full** error message
+
+Make sure to copy/paste the **entire** error message, including the traceback.
+
+It's also helpful to describe how often you encounter the problem. If it only happens during 
+certain circumstances, share those details too.
+
 ### Share Your Complete Code
 
+Avoid:
+* not sharing your code
+
+Along with the full error code (including full traceback), it's important to supply your 
+program's entire source code. This lets whoever is helping you run your program on their 
+machine, under a debugger, to see what's happening.
+
+If your program is just 1 file, it's easy to just send it over for examination
+
+But for bigger projects, it's important to produce a *minimum*, *comlete*, and *reproducible* (*MCR*) 
+example that reliably reproduces your problem (name comes from StackOverflow):
+* 'Minimal' meaning the code example is as short as possible (while still being able 
+to reproduce the problem)
+* 'Complete' meaning the code example contains everything it needs to reproduce the 
+problem
+* 'Reproducible' meaning the code example **reliably** reproduces the problem
+
 > Stack Overflow and Building an Answer Archive
+>> The purpose of Stack Overflow is to exist as an *answer archive* on the internet, it's 
+>> **not** a place for simple general questions. It's real purpose is **not** a place to answer 
+>> questons really, but instead it's to build and archive of programming questions 
+>> matched with their answers.
+>
+>> Meaning they're looking for specific, unique, and non-opinionated questions. The 
+>> questions need to be detailed and well-stated so that search engines can find them.
+>
+>> see the XKCD comic: ["Wisdom of the Ancients"](https://xkcd.com/979/) to see what the internet was like 
+>> before Stack Overflow
+>
+>> see Stack Overflow's guide ["How do I ask a good question?"](https://stackoverflow.com/help/how-to-ask/)
+>
+>> for a more casual forum to ask questions, see [r/learnpython](https://old.reddit.com/r/learnpython/)
 
 ### Make Your Code Readable with Proper Formatting
 
+Avoid:
+* sharing poorly formatted code
+
 ### Tell Your Helper what You've Already Tried
+
+Avoid:
+* not explaining what you've already tried
 
 ### Describe Your Setup
 
+Avoid:
+* not giving operation system or version information
 
 ## Examples of Asking a Question
 
