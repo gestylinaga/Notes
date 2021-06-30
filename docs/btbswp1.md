@@ -25,17 +25,17 @@ Example buggy program, *abcTraceback.py*:
 ```python
 def a():
     print('Start of a()')
-    b()                   # calls b()
+    b() # calls b()
 
 def b():
     print('Start of b()')
-    c()                   # calls c()
+    c() # calls c()
 
 def c():
     print('Start of c()')
-    42 / 0                # Causes a zero divide error
+    42 / 0 # Causes a zero divide error
 
-a()                       # calls a()
+a() # calls a()
 ```
 this returns:
 ```
@@ -44,13 +44,13 @@ Start of b()
 Start of c()
 Traceback (most recent call last):
   File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 13, in <module>
-    a()                   # calls a()
+    a() # calls a()
   File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 3, in a
-    b()                   # calls b()
+    b() # calls b()
   File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 7, in b
-    c()                   # calls c()
+    c() # calls c()
   File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 11, in c
-    42 / 0                # Causes a zero divide error
+    42 / 0 # Causes a zero divide error
 ZeroDivisionError: division by zero
 ```
 **Traceback Breakdown**: (by line)
@@ -61,23 +61,23 @@ Traceback (most recent call last):
 * also indicates that calls are listed in order of when they were called (most recent call being last)
 ```
 File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 13, in <module>
-    a()                   # calls a()
+    a() # calls a()
 ```
 * **Frame Summary** -- show information inside a frame object
 * **Frame Object** -- hold local variables and other data associated with function calls
     - created when the function is called; destroyed when the function returns
 ```
 File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 3, in a
-  b()                   # calls b()
+  b() # calls b()
 File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 7, in b
-  c()                   # calls c()
+  c() # calls c()
 ```
 * these next 4 lines are the next 2 frame summaries
 * notice that the `print()` calls are not included in the traceback
     - only the lines containing function calls that lead up to the exception
 ```
 File "C:\Users\gestylinaga\Github\Notes\abcTraceback.py", line 11, in c
-  42 / 0                # Causes a zero divide error
+  42 / 0 # Causes a zero divide error
 ZeroDivisionError: division by zero
 ```
 * The last frame summary shows the line that caused the unhandled exception
@@ -287,20 +287,105 @@ problem
 Avoid:
 * sharing poorly formatted code
 
+Part of making code *readable* is making sure it's properly formatted. Your helper's intent is to 
+copy your code and run your program on their machine. 
+
+But, if you copy/paste your source code into some email clients, they might remove all indentation:
+```python
+# Improper Formatting: (no indents)
+def knuts(self, value):
+if not isinstance(value, int) or value < 0:
+raise WizCoinException('kuts attr must be a positive int')
+self._knuts = value
+```
+To make sure your code is properly formatted, you can enter it into a *pastebin* website like:
+* [Pastebin](https://pastebin.com/)
+* [Github Gist](https://gist.github.com/)
+
+These store your code snippets as a short, public URL like: `https://pastebin.com/XeU3yusC`
+
+If you're entering code into [Stack Overflow](https://stackoverflow.com/), [r/learnpython](https://old.reddit.com/r/learnpython/), 
+or a similar forum, use the available text box tools:
+* Indent with 4 spaces `'    '` *usually* changes to a monospace *Code Font*, which is easier to read
+* Enclosing code with `backticks` also changes it to monospace *Code Font*
+
+Otherwise, forum text boxes might render your code as:
+```python
+# Improper Formatting: (no line breaks)
+def knuts(self, value):if not isinstance(value, int) or value < 0:raise WizCoinException('kuts attr must be a positive int')self._knuts = value
+```
+
+Note that taking screenshots of code is **not** efficient. It makes it impossible to copy/paste and 
+subsequently run your program. It usually makes it harder to read too.
+
 ### Tell Your Helper what You've Already Tried
 
 Avoid:
 * not explaining what you've already tried
+* asking someone to write a program for you
+
+Explaining what you've already done, and the results of those efforts has multiple benefits:
+* Avoids helper retrying those *false leads*
+* Shows you've put in effort yourself
+* Shows you're asking for *Help*, not asking someone to code for you
 
 ### Describe Your Setup
 
 Avoid:
 * not giving operation system or version information
 
+Your machine's particular setup might affect how your program runs, and what errors it produces. To 
+make sure anyone helping can reproduce your error, it's important to inlcude:
+* The operating system and version
+    - "Windows 10 Professional"
+    - "macOS Catalina"
+* The Python version 
+    - "Python 3.7"
+    - "Python 3.6.6"
+* Any third-party modules and their versions
+    - "Django 2.1.1"
+
+Note that you can find the versions of third-party modules by running `pip list` in the terminal
+
+Or, in the interactive shell:
+```python
+import django
+django.__version__
+# this returns: '2.1.1'
+```
+This info may be unnecessary, but it's informative to include it anyways
+
 ## Examples of Asking a Question
+
+A properly asked question:
+```
+Selenium webdriver: How do I find ALL of an element's attributes?
+
+In the Python Selenium module, once I have a WebElement object I can get the value of any of its 
+attributes with get_attribute():
+
+    foo = elem.get_attrubute('href')
+
+If the attribute name 'href' doesn't exist, None is returned.
+
+My question is, how can I get a list of all the attributes that an element has? There doesn't seem 
+to be a get_attributes() or get_attribute_names() method.
+
+I'm using version 2.44.0 of the Selenium module for Python 
+```
 
 
 ## Summary
+
+* Independently answering your own programming questions is the most important skill a programmer 
+**must** learn
+* Programmers made the internet...programming answers can be found on the internet too
+* Error messages can be copy/pasted into google for more information
+* The error's traceback shows where in the program the error occured
+* Linters point out typos in real-time
+* If you can't find the answer on the internet, post the a question to a forum/in an email
+* Remember that *Not knowing* something is fine, even experienced progammers have to look up answers. 
+The skill to focus on is being proficient in finding solutions.
 
 
 ---
