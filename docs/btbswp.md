@@ -28,5 +28,7 @@ Chapters:
 
 [No Starch Press Official Link](https://nostarch.com/beyond-basic-stuff-python)
 
+[Read Online for Free at InventWithPython](https://inventwithpython.com/beyond/)
+
 ---
 [back to Index/Table of Contents](index.md)
