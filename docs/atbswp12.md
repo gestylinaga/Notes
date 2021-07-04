@@ -130,6 +130,7 @@ The next step, saving the web page to a file on your hard drive with the standar
 and `write()` method, works *almost* the same
 
 The file must be opened in *write binary* mode by passing `'wb'` as the second argument to `open()`:
+(to preserve unicode encoding)
 ```python
 import requests
 res = requests.get('https://automatetheboringstuff.com/files/rj.txt')
@@ -145,15 +146,71 @@ for chunk in res.iter_content(100000): # one-hundred thousand
 
 playFile.close()
 ```
+The `iter_content()` method returns *chunks* of the content on each iteration through the loop
+* Each chunk is of the *bytes* data type
+* The number in the example, `100000` is *generally* a good size
+
+Note that even though the filename on the website is `rj.txt`, you can save it as another name, in 
+this case `RomeoAndJuliet.txt`
+
+Also note that the specified *chunks* to use is `100000`, but the last part of the file only needed 
+`78981` bytes...that's where that number comes from
 
 > Unicode Encodings
+>> beyond the scope of this book, but see these articles for more information:
+>
+> [Joel on Software: Unicode and Character Sets](https://www.joelonsoftware.com/articles/Unicode.html)
+>
+> [Pragmatic Unicode](https://nedbatchelder.com/text/unipain.html)
+
+### Review of the Complete Downloading/Saving a File
+
+1. Call `requests.get()` to download the file
+2. Call `open()` with `'wb'` to create a new file in *write binary* mode
+3. Loop over the *Response* object's `iter_content()` method
+4. Call `write()` on each iteration to write the content to the file
+5. Call `close()` to close the file
+
+That's the summary of using the `requests` module. The `for` loop and `iter_content()` stuff may 
+seem complicated compared to the `open()`/`write()`/`close()` workflow of writing text files, but 
+it's to ensure that the module doesn't take up too much memory (even with massive file downloads).
+
+[See this link for more information on the requests module's other features](https://requests.readthedocs.org/)
 
 
 ## HTML
 
 ### Resources for Learning HTML
 
+*HyperText Markup Language* (*HTML*) is the format that web pages are written in
+
+For a beginner tutorial on HTML see:
+* [Mozilla: Structuring the web with HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+* [HTML Dog: HTML Beginner Tutorial](https://htmldog.com/guides/html/beginner/)
+* [CodeAcademy: Learn HTML](https://www.codecademy.com/learn/learn-html)
+
 ### A Quick Refresher
+
+An HTML file is a plaintext file with the `.html` file extension
+
+The text in these files is surrounded by **tags**, which are words enclosed in angle brackets `<>`
+* the tags tell the browser how tot format the web page
+
+A starting tag and closing tag can enclose some text to form an **element**
+
+The **text** (aka **inner HTML**) is the content between the starting and closing tags
+```html
+<strong>Hello</strong>, world!
+```
+this displays `Hello, world!` to the browser, with `Hello` in bold like this: **Hello**, world!
+
+Some tags have extra properties in the form of **attributes** within the angle brackets, like the 
+`<a>` tag to enclose text that should be a link:
+```html
+Al's free <a href="https://inventwithpython.com">Python books</a>.
+```
+this displays `Al's free Python books.`, with the URL inside the words `Python books` like this: Al's free [Python books](https://inventwithpython.com)
+
 
 ### Viewing the Source HTML of a Web Page
 
