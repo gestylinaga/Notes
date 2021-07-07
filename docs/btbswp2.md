@@ -134,13 +134,108 @@ The command line program exists in an executable file on your computer:
 
 ### Opening a Terminal Window
 
+On Windows: click `Start` button, type `Command Prompt`, then press `Enter`
+
+On macOS: click the `Spotlight` icon, type `Terminal`, then press `Enter`
+
+On Ubuntu Linux: press the `Super`/`Win` key, type `Terminal`, then press enter (or `CTRL+ALT+t`)
+
+Just like how the interactive shell has a `>>>` prompt, the terminal shell has it's own prompt:
+* on Windows: `C:\Users\gestylinaga>your command goes here`
+* on macOS: `gestys-MacBook-Pro:~ gesty$ your command goes here`
+* on Linux: `gesty@laptopcantstop:~$ your command goes here`
+
+Note that many books/tutorials represent the command line prompt as just `$` to simplify their 
+examples
+
 ### Running Programs from the Command Line
+
+To run a program or command, enter its name into the command line
+
+Running the default calculator program:
+* on Windows: enter `calc.exe`
+* on macOS: enter `open -a Calculator` (technically, this runs the `open` program, then runs the `Calculator` program)
+* on Linux: enter `gnome-calculator`
+
+Note that commands and program names are **case sensitive** on Linux, but not on Windows or macOS
+
+These calculator programs work as commands because they (`calc.exe`, `open`, and `gnome-calculator`) 
+exist in folders that are included in the `PATH` environment variables
+* on Windows: the shell checks the cwd before checking folders in `PATH`
+* on Linux and macOS: a `./` typed before a filename indicates cwd
+
+If the program isn't in a folder listed in `PATH` you can:
+* `cd` into the folder that contains the program
+    - `cd C:\Windows\System32`
+    - `calc.exe`
+* enter the full file path
+    - `C:\Windows\System32\calc.exe`
+
+Note that on Windows, if a program ends with the file extension `.exe` or `.bat`, including the 
+extension is optional. Entering `calc` is the same as entering `calc.exe`
 
 ### Using Command Line Arguments
 
+*Command line arguments* are bits of text you enter after the command name
+
+For example:
+* `cd C:\Users`
+    - `cd` is the command
+    - `C:\Users` is the argument, tells `cd` which folder to change to
+* `python3 yourScript.py`
+    - `python3` is the command
+    - `yourScript.py` is the argument, tells `python3` which file to seek for instructions
+
+*Command line options* (aka flags, switches, or simply options) are a single-letter or short-word 
+command line arguments
+* on Windows: begin with a forward slash `/`
+* on Linux/macOS: begin with a single dash `-` or double dash `--`
+
+Note that folders/filenames with spaces in them should be wrapped in double quotes `""` to avoid 
+confusing the shell with passing 2 arguments:
+```powershell
+C:\Users\gestylinaga>cd "Vacation Photos"
+
+# instead of:
+C:\Users\gestylinaga>cd Vacation Photos
+```
+
+Another common argument for many commands is `--help` on Linux/macOS, and `/?` on Windows, to bring 
+up more information for the command
+
 ### Running Python Code from the Command Line with -c
 
+The `-c` argument is used to run a small amount of throwaway Python code that you can run once and 
+then discard:
+```powershell
+C:\Users\gestylinaga>python -c "print('Hello, world!')"
+# this returns: Hello, world!
+```
+Note that the code comes **after** the `-c` flag, wrapped in double quotes `""`
+
+The `-c` flag is handy for when you want to see the results of a single Python instruction and don't 
+want to waste time entering the interactive shell. For example, to quickly display the output of 
+the `help()` function and return to the command line:
+```powershell
+# on Windows PowerShell:
+
+PS C:\Users\gestylinaga> python -c "help(len)"
+Help on built-in function len in module builtins:
+
+len(obj, /)
+    Return the number of items in a container.
+
+PS C:\Users\gestylinaga>
+```
+
 ### Running Python Programs from the Command Line
+
+Python scripts are text files that have the `.py` extension. They are **not** executable files; 
+rather, the Python interpreter reads the text files and carries out the instructions
+
+On Windows: `python yourScript.py`
+
+On Linux/macOS: `python3 yourScript.py`
 
 ### Running the py.exe Program
 
